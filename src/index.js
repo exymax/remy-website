@@ -1,21 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './header/header.js';
-import Offices from './offices/offices.js';
-import Hr from './hr/hr.js';
-import Footer from './footer/footer.js';
-import About from './about/about.js';
+
+import Header from './containers/Header';
+import AboutSection from './containers/AboutSection';
+import SliderSection from './containers/SliderSection';
+import HiringSection from './containers/HiringSection';
+import Footer from './containers/Footer';
 
 const App = () => (
-    <div id="root">
+  <div id="root">
     <Header />
-    <About />
-    <Offices />
-    <Hr />
+    <AboutSection />
+    <SliderSection />
+    <HiringSection />
     <Footer />
-    </div>
-)
+  </div>
+);
 
 ReactDOM.render(<App/>, document.getElementById('root'));
-
-module.hot.accept();
