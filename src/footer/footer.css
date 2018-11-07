@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/BasisGrotesquePro-Regular.ttf') format('truetype');
+ }
+ @font-face {
+    font-family: 'GrotesqueLight';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/fonts/BasisGrotesquePro-Light.ttf') format('truetype');
+ }
+
+.red {
+    overflow-y: scroll;
+    position: relative;
+    z-index: 1;
+    background: #121418;
+    width: 100vw;
+    height: 85vh;
+    margin-right: -8px;
+    margin-bottom: -8px;
+    margin-left: -8px;
+    font-size: 15px;
+}
+.logo {
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
+    transform:translate(-50%, -50%);  
+    width: 13%;
+}
+.copyright {
+    font-family: "Grotesque";
+    z-index: 1;
+    position: absolute;
+    color: white;
+    left: 50%;
+    bottom: 18%;
+    transform:translate(-50%, -50%);  
+    width: 40%;
+    font-size: 12px;
+    text-align: center;
+}
+.contact {
+    font-family: "Grotesque";
+    z-index: 1;
+    color: white;
+ 
+    width: 40%;
+    font-size: 15px;
+    text-align: left;
+    line-height: 24px;
+}
+.barcelona {
+    position: absolute;
+    left: 13%;
+    top: 10%;
+}
+.contactkl {
+    font-family: "Grotesque";
+    z-index: 1;
+    position: absolute;
+    color: white;
+    left: 50%;
+    bottom: 20%;
+    transform:translate(-50%, -50%);  
+    width: 40%;
+    
+    text-align: center;
+}
+.contactkb {
+    font-family: "Grotesque";
+    z-index: 1;
+    position: absolute;
+    color: white;
+    left: 70%;
+    bottom: 20%;
+    transform:translate(-50%, -50%);  
+    width: 40%;
+    
+    text-align: center;
+}
+.contactkbe {
+    font-family: "Grotesque";
+    z-index: 1;
+    position: absolute;
+    color: white;
+    left: 30%;
+    bottom: 20%;
+    transform:translate(-50%, -50%);  
+    width: 40%;
+    
+    text-align: center;
+}
+.bold {
+    font-family: 'GrotesqueBold';
+    line-height: 20px;
+    font-size: 20px;
+ }

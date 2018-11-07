@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/BasisGrotesquePro-Regular.ttf') format('truetype');
+ }
+ @font-face {
+    font-family: 'GrotesqueLight';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/fonts/BasisGrotesquePro-Light.ttf') format('truetype');
+ }
+
+.red {
+    overflow-y: scroll;
+    position: relative;
+    z-index: 1;
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -8px;
+    margin-right: -8px;
+    margin-left: -8px;
+}
+.logo {
+    z-index: 1;
+    position: absolute;
+    left: 50%;   
+    top: 7%;
+    transform:translate(-50%, -50%);
+    width: 17%;
+}
+.tagline {
+    font-family: "GrotesqueBold";
+    z-index: 1;
+    position: absolute;
+    color: black;
+    left: 13%;
+    top:25%;
+    transform:translate(0%, -50%);
+    width: 55%;
+    font-size: 34px;
+    text-align: left;
+}
+.tg1t {
+    font-family: "GrotesqueLight";
+    z-index: 1;
+    position: absolute;
+    color: black;
+    left: 13%;
+    top: 55%;
+    transform:translate(0%, -50%);
+    font-size: 20px;
+    width: 55%;
+    text-align: left;
+}
+.joinus {
+    font-family: "Grotesque";
+    z-index: 1;
+    position: absolute;
+    right: 7%;   
+    top: 7%;
+    transform:translate(0, -50%);
+    font-size: 20px;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.discover {
+    font-family: "Grotesque";
+    z-index: 1;
+    position: absolute;
+    left: 50%;   
+    bottom: 7%;
+    transform:translate(-50%, 50%);
+    font-size: 15px;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 0;
+}

@@ -1,0 +1,129 @@
+
+@font-face {
+    font-family: 'Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/BasisGrotesquePro-Regular.ttf') format('truetype');
+ }
+ @font-face {
+    font-family: 'GrotesqueLight';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/fonts/BasisGrotesquePro-Light.ttf') format('truetype');
+ }
+ @font-face {
+    font-family: 'GrotesqueBold';
+    font-style: normal;
+    font-weight: 100;
+    src: url('/fonts/BasisGrotesquePro-Bold.ttf') format('truetype');
+ }
+ .bold {
+    font-family: 'GrotesqueBold';
+ }
+.red {
+    position: relative;
+    z-index: 1;
+    background: black;
+    width: 100vw;
+    height: 100vh;
+    margin-right: -8px;
+    margin-left: -8px;
+    font-size:20px;
+}
+.map {
+    z-index: 1;
+    position: absolute;
+    left: 67%;   
+    top: 50%;
+    transform:translate(-50%, -50%);
+    width: 55%;
+}
+.tagline {
+    font-family: "Grotesque";
+    z-index: 1;
+    position: absolute;
+    color: white;
+    left: 13%;
+    top: 15%;
+    transform:translate(0, -50%);
+    width: 40%;
+    text-align: left;
+    font-size:34px;
+}
+.tg1t {
+    font-family: "GrotesqueLight";
+    z-index: 1;
+    position: absolute;
+    color: white;
+    left: 13%;
+    top:25%;
+    width:40%;
+    text-align: left;
+    font-size:20px;
+}
+.sliderdiv {
+    z-index: 1;
+    position: absolute;
+    right: 0%;   
+    bottom: 0%;
+    width: 40vw;
+    height: 100vh;
+}
+.photo {
+    width: 40vw;
+    height: 100vh;
+    object-fit: cover;
+}
+.frwrdr {
+    z-index: 1;
+    position: absolute;
+    color: white;
+    right: 0%;
+    bottom: 0%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background:black;
+}
+.frwrdl {
+    z-index: 1;
+    position: absolute;
+    color: white;
+    right: 50px;
+    bottom: 0%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background:black;
+}
+.count {
+    z-index: 1;
+    font-size:20px;
+    position: absolute;
+    color: white;
+    left: 0%;
+    bottom: 0%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    background:black;
+    vertical-align: middle;
+}
+.icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+}
+.vertmiddle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}
+.blue {
+        color: rgb(0, 17, 255);
+        font-family: 'GrotesqueBold';
+}
