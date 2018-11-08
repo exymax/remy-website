@@ -1,0 +1,181 @@
+@import "~styles/variables.scss";
+
+.footer {
+  height: 545px;
+  background-color: $app-theme-color;
+  padding: 95px 0 20px 180px;
+  color: $white;
+  letter-spacing: 0;
+
+  @media (max-width: $screen-lg-min) {
+    height: 440px;
+    padding: 80px 0 20px 150px;
+  }
+
+  @media (max-width: $screen-md-min) {
+    height: 440px;
+    padding: 80px 0 20px 125px;
+  }
+
+  @media (max-width: $screen-sm-min) {
+    height: 400px;
+    padding: 60px 0 30px 40px;
+  }
+
+  @media (max-width: $screen-xs-min) {
+    height: 885px;
+    padding: 45px 0 20px 20px;
+  }
+
+  .countries {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -130px;
+
+    @media (max-width: $screen-sm-min) {
+      margin-right: 0;
+    }
+
+    .country {
+      width: 310px;
+      margin: 0 130px 50px 0;
+
+      @media (max-width: $screen-lg-min) {
+        height: 130px;
+        width: 255px;
+        margin: 0 110px 40px 0;
+      }
+
+      @media (max-width: $screen-md-min) {
+        height: 130px;
+        width: 210px;
+        margin: 0 100px 30px 0;
+      }
+
+      @media (max-width: $screen-sm-min) {
+        height: 130px;
+        width: 220px;
+        margin: 0 20px 30px 0;
+      }
+
+      @media (max-width: $screen-xs-min) {
+        height: 130px;
+        width: 280px;
+        margin: 0 20px 22px 0;
+      }
+
+      .title {
+        line-height: 20px;
+        font-size: 20px;
+        font-family: GrotesqueBold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+
+        @media (max-width: $screen-lg-min) {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+
+        @media (max-width: $screen-md-min) {
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .address {
+        line-height: 24px;
+        font-size: 15px;
+        font-family: Grotesque;
+
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: $screen-lg-min) {
+          font-size: 13px;
+          line-height: 20px;
+        }
+
+        @media (max-width: $screen-md-min) {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  .bottom-section {
+    margin: 30px 0;
+    width: 400px;
+    max-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (max-width: $screen-lg-min) {
+      margin: 20px 0;
+    }
+
+    @media (max-width: $screen-md-min) {
+      margin: 45px 0 20px 0;
+    }
+
+    @media (max-width: $screen-md-min) {
+      margin: 40px 0 20px 0;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      margin: 22px 0 0 0;
+      width: 205px;
+    }
+
+    .logo {
+      height: 20px;
+      width: 180px;
+      margin: 0 40px 20px 0;
+
+      @media (max-width: $screen-lg-min) {
+        margin-bottom: 15px;
+        height: 16px;
+        width: 144px;
+      }
+    }
+
+    .copyright {
+      font-size: 14px;
+      line-height: 20px;
+      font-family: Grotesque;
+      opacity: 0.5;
+      margin: 0 40px 20px 0;
+
+      @media (max-width: $screen-lg-min) {
+        margin-bottom: 15px;
+        font-size: 13px;
+      }
+
+      @media (max-width: $screen-md-min) {
+        margin-bottom: 15px;
+        font-size: 12px;
+      }
+
+      @media (max-width: $screen-xs-min) {
+        margin-bottom: 10px;
+        font-size: 12px;
+      }
+    }
+
+    .privacy-policy {
+      font-size: 14px;
+      line-height: 20px;
+      font-family: Grotesque;
+      text-transform: uppercase;
+      opacity: 0.5;
+
+      @media (max-width: $screen-lg-min) {
+        font-size: 13px;
+      }
+
+      @media (max-width: $screen-md-min) {
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/BasisGrotesquePro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GrotesqueLight';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../fonts/BasisGrotesquePro-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GrotesqueBold';
+  font-style: normal;
+  font-weight: 100;
+  src: url('../fonts/BasisGrotesquePro-Bold.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  width: 100%;
+}

@@ -36,12 +36,25 @@ module.exports = {
           },
         }],
       },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [{
+          loader: 'file-loader'
+        }],
+      },
+      {
+        test: /\.(png|jpg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [{
+          loader: 'file-loader'
+        }],
+      },
     ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     alias: {
       '~styles': path.resolve(process.cwd(), 'assets/styles'),
+      '~image': path.resolve(process.cwd(), 'assets/img'),
     },
   },
   plugins:[
