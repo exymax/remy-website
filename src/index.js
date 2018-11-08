@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Header from './containers/Header';
-import AboutSection from './containers/AboutSection';
-import SliderSection from './containers/SliderSection';
-import HiringSection from './containers/HiringSection';
-import Footer from './containers/Footer';
+import Header from './components/Header';
+import AboutSection from './components/AboutSection';
+import SliderSection from './components/SliderSection';
+import HiringSection from './components/HiringSection';
+import Footer from './components/Footer';
+import "~styles/app.scss";
 
 const App = () => (
   <div id="root">
