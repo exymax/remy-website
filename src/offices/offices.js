@@ -22,23 +22,85 @@ const tagline =
         from all over the world.  
    </h2>
 </div>;
-const Slider = <div className={styles.sliderdiv}>
-    <img className={styles.photo} src='/img/arrival.jpg' />
-    <div className={styles.frwrdr}>
-        <img className={styles.icon} src='/img/arrow-right.svg'/>
-    </div>
-    <div className={styles.frwrdl}>
-        <img className={styles.icon} src='/img/arrow-left.svg'/>
-    </div>
-    <div className={styles.count}>
-    <span className={styles.vertmiddle}>1/3</span>
-    </div>
-</div>
+
+class Slider extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            arrows:{
+                right:"/img/arrow-right.svg",
+                left:"/img/arrow-left.svg"
+            },
+            images: [
+                "./img/T4-Front@2x.jpg",
+                "./img/roborace.jpg",
+                "./img/07.png",
+                /*"https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg",
+                "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/mountains.jpg",
+                "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/redsky.jpg",
+                "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/sandy-shores.jpg",
+                "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/tree-of-life.jpg"*/
+            ],
+            slide_id: 0
+        }
+
+        // This binding is necessary to make `this` work in the callback
+        this.increase = this.increase.bind(this);
+        this.decrease = this.decrease.bind(this);
+    }
+
+    increase() {
+        var id = this.state.slide_id
+        if (this.state.slide_id == 2)
+        {
+            id = 0;
+        }
+        else
+        {
+            id++;
+        }
+        this.setState({slide_id:id});
+    }
+
+    decrease() {
+        var id = this.state.slide_id
+        if (this.state.slide_id == 0)
+        {
+            id = 2;
+        }
+        else
+        {
+            id--;
+        }
+        this.setState({slide_id:id});
+    }
+
+    slide(id){
+        return (
+            <div className={styles.sliderdiv}>
+                <img className={styles.photo} src={this.state.images[id]} />
+                <div className={styles.frwrdr} onClick={(e) => this.increase(e)}>
+                    <img className={styles.icon} src={this.state.arrows.right}/>
+                </div>
+                <div className={styles.frwrdl} onClick={(e) => this.decrease(e)}>
+                    <img className={styles.icon} src={this.state.arrows.left}/>
+                </div>
+                <div className={styles.count}>
+                    <span className={styles.vertmiddle}>{id+1}/{this.state.images.length}</span>
+                </div>
+            </div>
+        );
+    }
+
+    render() {
+        return this.slide(this.state.slide_id)
+    }
+}
 
 const Offices = () => (
     <div className={styles.red}>
         {tagline}
-        {Slider}
+        {<Slider/>}
     </div>
 )
 

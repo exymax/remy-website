@@ -9,7 +9,7 @@ export default class Slider extends Component {
 
     this.state = {
       images: [
-        "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/aurora.jpg",
+        "./img/T4-Front@2x.jpg",
         "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/canyon.jpg",
         "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/city.jpg",
         "https://s3.us-east-2.amazonaws.com/dzuz14/thumbnails/desert.jpg",
