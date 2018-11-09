@@ -78,12 +78,14 @@ export default () => (
     </div>
 
     <div className="bottom-section">
-      <img
-        src={logo}
-        className="logo"
-      />
-      <span className="copyright">Copyright © 2018. All rights reserved.</span>
-      <span className="privacy-policy">privacy policy</span>
+      <div className="logo-line">
+        <img
+          src={logo}
+          className="logo"
+        />
+        <span className="copyright">Copyright © 2018. All rights reserved.</span>
+      </div>
+      <span className="privacy-policy">Privacy Policy</span>
     </div>
   </div>
 );
