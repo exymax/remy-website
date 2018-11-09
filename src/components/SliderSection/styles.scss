@@ -153,9 +153,71 @@
   .slider {
     height: 100%;
     flex-grow: 1;
+    position: relative;
 
     @media (max-width: $screen-sm-min) {
-      height: auto;
+      height: 500px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      height: 420px;
+    }
+
+
+    .control-panel {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: space-between;
+
+      .info {
+        font-family: GrotesqueLight;
+        font-size: 16px;
+        line-height: 20px;
+        background-color: $white;
+      }
+
+      .square {
+        height: 100px;
+        width: 100px;
+
+        @media (max-width: $screen-md-min) {
+          height: 80px;
+          width: 80px;
+        }
+
+        @media (max-width: $screen-sm-min) {
+          height: 60px;
+          width: 60px;
+        }
+      }
+
+      .controls {
+        background-color: $app-theme-color;
+        display: flex;
+
+        > .square {
+          &:hover,
+          &.active {
+            background-color: $element-hover-color;
+          }
+        }
+      }
+    }
+
+    .slider-wrapper {
+      height: 100%;
+      width: 100%;
+
+      .slide {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+      }
     }
   }
 }
