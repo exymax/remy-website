@@ -1,0 +1,88 @@
+@import "~styles/variables.scss";
+
+.about-us {
+  width: 748px;
+  margin: 156px 0 196px 180px;
+  letter-spacing: 0;
+
+  @media (max-width: $screen-lg-min) {
+    margin: 124px 0 160px 150px;
+    width: 620px;
+  }
+
+  @media (max-width: $screen-md-min) {
+    margin: 136px 0 120px 126px;
+    width: 512px;
+  }
+
+  @media (max-width: $screen-sm-min) {
+    margin: 66px 0 76px 40px;
+    width: 572px;
+  }
+
+  @media (max-width: $screen-xs-min) {
+    margin: 50px 0 28px 20px;
+    width: 280px;
+  }
+
+
+  .title {
+    font-family: GrotesqueBold;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-size: 34px;
+    margin-bottom: 110px;
+
+    @media (max-width: $screen-lg-min) {
+      font-size: 28px;
+      line-height: 36px;
+      margin-bottom: 100px;
+    }
+
+    @media (max-width: $screen-md-min) {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 84px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .description {
+    height: 280px;
+    font-family: Grotesque;
+    line-height: 28px;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: $screen-lg-min) {
+      height: 240px;
+      font-size: 17px;
+      line-height: 24px;
+    }
+
+    @media (max-width: $screen-md-min) {
+      height: 288px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    @media (max-width: $screen-sm-min) {
+      height: 240px;
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      height: 408px;
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}
