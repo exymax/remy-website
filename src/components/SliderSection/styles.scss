@@ -1,0 +1,161 @@
+@import "~styles/variables.scss";
+
+.slider-section {
+  height: 780px;
+  width: 100%;
+  display: flex;
+  justify-content: stretch;
+
+  @media (max-width: $screen-lg-min) {
+    height: 660px;
+  }
+
+  @media (max-width: $screen-sm-min) {
+    height: 860px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+  }
+
+  @media (max-width: $screen-xs-min) {
+    height: 952px;
+  }
+
+  .description {
+    height: 496px;
+    width: 530px;
+    background-color: $app-theme-color;
+    padding: 124px 108px 160px 180px;
+
+    color: $white;
+    font-size: 20px;
+    line-height: 28px;
+    font-family: Grotesque;
+
+    @media (max-width: $screen-lg-min) {
+      height: 420px;
+      width: 438px;
+      padding: 116px 94px 125px 150px;
+
+      font-size: 17px;
+      line-height: 24px;
+    }
+
+    @media (max-width: $screen-md-min) {
+      height: 398px;
+      width: 360px;
+      padding: 116px 76px 146px 126px;
+
+      font-size: 16px;
+    }
+
+    @media (max-width: $screen-sm-min) {
+      height: 192px;
+      width: calc(100% - 38px - 38px);
+      padding: 78px 38px 90px 38px;
+
+      font-size: 15px;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      height: 428px;
+      width: calc(100% - 20px - 20px);
+      padding: 50px 20px 54px 20px;
+
+      font-size: 14px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .introduction {
+      margin-bottom: 32px;
+
+      @media (max-width: $screen-lg-min) {
+        margin-bottom: 22px;
+      }
+
+      @media (max-width: $screen-md-min) {
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: $screen-sm-min) {
+        height: 72px;
+        width: 336px;
+        margin-right: 20px;
+      }
+
+      @media (max-width: $screen-xs-min) {
+        width: 280px;
+        margin-bottom: 22px;
+      }
+    }
+
+    .advantages {
+      line-height: 44px;
+      margin-bottom: 28px;
+
+      .plus {
+        font-family: GrotesqueBold;
+      }
+
+      @media (max-width: $screen-lg-min) {
+        line-height: 36px;
+        margin-bottom: 24px;
+      }
+
+      @media (max-width: $screen-md-min) {
+        line-height: 32px;
+      }
+
+      @media (max-width: $screen-sm-min) {
+        margin-bottom: 0;
+        width: 336px;
+        height: 96px;
+      }
+
+      @media (max-width: $screen-xs-min) {
+        font-size: 16px;
+        width: 280px;
+        margin-bottom: 22px;
+      }
+    }
+
+    .conclusion {
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @media (max-width: $screen-lg-min) {
+        height: 190px;
+      }
+
+      @media (max-width: $screen-md-min) {
+        height: 186px;
+      }
+
+      @media (max-width: $screen-sm-min) {
+        height: 192px;
+        width: 336px;
+      }
+
+      @media (max-width: $screen-xs-min) {
+        height: 216px;
+        width: 280px;
+      }
+    }
+  }
+
+  .slider {
+    height: 100%;
+    flex-grow: 1;
+
+    @media (max-width: $screen-sm-min) {
+      height: auto;
+    }
+  }
+}
