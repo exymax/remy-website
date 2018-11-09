@@ -5,7 +5,7 @@ import './styles.scss';
 class HiringSection extends React.PureComponent {
 	render() {
 		return (
-			<div>
+			<div className="hiring-section">
         HiringSection
 			</div>
 		);
