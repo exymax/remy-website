@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Slider from './Slider';
-import { slides } from './constants';
 import './styles.scss';
 
 class SliderSection extends React.PureComponent {
@@ -32,13 +31,7 @@ class SliderSection extends React.PureComponent {
 					</div>
 				</div>
 
-				<Slider>
-					{slides.map((slide, index) => (
-						<div key={index}>
-							{slide}
-						</div>
-					))}
-				</Slider>
+				<Slider />
 			</div>
 		);
 	}
