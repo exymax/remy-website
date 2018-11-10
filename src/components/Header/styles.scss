@@ -76,6 +76,7 @@
   }
 
   .discover-more {
+    cursor: pointer;
     text-transform: uppercase;
     font-size: 16px;
     line-height: 20px;
@@ -86,6 +87,20 @@
 
     @media (max-width: $screen-md-min) {
       font-size: 13px;
+    }
+
+    &:hover {
+      color: $discover-more-color;
+      position: relative;
+
+      &:after {
+        content: ' ';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        border-bottom: 1px solid $discover-more-color;
+      }
     }
   }
 
@@ -110,6 +125,7 @@
   }
 
   .join-us {
+    cursor: pointer;
     height: 56px;
     width: 200px;
     border: 2px solid $white;
