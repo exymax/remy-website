@@ -17,10 +17,11 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         include: [
           /assets/,
-          /src/
+          /src/,
+          /node_modules/,
         ],
         use: [{
           loader: 'style-loader',
@@ -55,6 +56,8 @@ module.exports = {
     alias: {
       '~styles': path.resolve(process.cwd(), 'assets/styles'),
       '~image': path.resolve(process.cwd(), 'assets/img'),
+      '~components': path.resolve(process.cwd(), 'src/components'),
+      '~containers': path.resolve(process.cwd(), 'src/containers'),
     },
   },
   plugins:[

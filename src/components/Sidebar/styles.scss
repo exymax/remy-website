@@ -1,0 +1,47 @@
+@import "~styles/variables.scss";
+
+.sidebar {
+  height: 100%;
+  width: 354px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $white;
+  font-family: Grotesque;
+  box-shadow: 2px 0 8px rgba(33, 33, 33, 0.1);
+
+  .title {
+    height: 124px;
+    width: 100%;
+    text-transform: uppercase;
+    font-family: GrotesqueBold;
+    font-size: 42px;
+    line-height: 48px;
+    justify-content: flex-end;
+  }
+
+  .item {
+    height: 68px;
+    width: calc(100% - 50px);
+    padding: 12px 0 0 50px;
+
+    .name {
+      font-family: GrotesqueBold;
+      font-size: 20px;
+      line-height: 32px;
+      margin-bottom: 10px;
+    }
+
+    .location {
+      text-transform: uppercase;
+      font-size: 11px;
+      line-height: 13px;
+    }
+
+    &:hover,
+    &.active {
+      background-color: $sidebar-item-hover;
+    }
+  }
+}
