@@ -25,21 +25,23 @@ class Sidebar extends React.PureComponent {
           we are hiring
         </div>
 
-        <Scrollbar>
-          {jobs.map((job) => {
-            const { id } = job;
-            const isActive = activeJob === id;
+        <div className="container">
+          <Scrollbar>
+            {jobs.map((job) => {
+              const { id } = job;
+              const isActive = activeJob === id;
 
-            return (
-              <Item
-                key={id}
-                job={job}
-                isActive={isActive}
-                changeActiveJob={changeActiveJob}
-              />
-            );
-          })}
-        </Scrollbar>
+              return (
+                <Item
+                  key={id}
+                  job={job}
+                  isActive={isActive}
+                  changeActiveJob={changeActiveJob}
+                />
+              );
+            })}
+          </Scrollbar>
+        </div>
       </div>
     );
   }

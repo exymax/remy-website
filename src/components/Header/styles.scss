@@ -90,7 +90,7 @@
     }
 
     &:hover {
-      color: $discover-more-color;
+      color: $text-hover-color;
       position: relative;
 
       &:after {
@@ -99,7 +99,7 @@
         bottom: -10px;
         left: 0;
         right: 0;
-        border-bottom: 1px solid $discover-more-color;
+        border-bottom: 1px solid $text-hover-color;
       }
     }
   }

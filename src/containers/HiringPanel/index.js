@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Sidebar from '~components/Sidebar';
 import BodyContent from '~components/BodyContent';
-import { jobs } from './constants';
+import { jobs } from '~constants';
 
 class HiringPanel extends React.PureComponent {
   static propTypes = {

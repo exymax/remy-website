@@ -1,4 +1,296 @@
+@import "~styles/variables.scss";
+
 .hiring-section {
-  height: 780px;
-  width: 100%;
+  height: calc(780px - 100px - 150px);
+  width: calc(100% - 180px - 180px);
+  padding: 100px 180px 150px 180px;
+
+  display: flex;
+
+  @media (max-width: $screen-lg-min) {
+    height: calc(660px - 100px - 90px);
+    width: calc(100% - 150px - 150px);
+    padding: 100px 150px 90px 150px;
+  }
+
+  @media (max-width: $screen-md-min) {
+    height: calc(660px - 100px - 120px);
+    width: calc(100% - 126px - 126px);
+    padding: 100px 126px 120px 126px;
+  }
+
+  @media (max-width: $screen-sm-min) {
+    height: calc(600px - 80px - 76px);
+    width: calc(100% - 38px - 38px);
+    padding: 80px 38px 76px 38px;
+  }
+
+  @media (max-width: $screen-xs-min) {
+    height: calc(796px - 28px - 8px);
+    width: calc(100% - 20px - 20px);
+    padding: 28px 20px 8px 20px;
+
+    flex-direction: column;
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-family: GrotesqueBold;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 30px;
+
+    @media (max-width: $screen-lg-min) {
+      font-size: 28px;
+      line-height: 36px;
+      margin-bottom: 26px;
+    }
+
+    @media (max-width: $screen-md-min) {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 14px;
+    }
+  }
+
+  .text {
+    font-family: Grotesque;
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 36px;
+
+    @media (max-width: $screen-lg-min) {
+      font-size: 17px;
+      line-height: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: $screen-md-min) {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: $screen-sm-min) {
+      font-size: 15px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .text-hovered:hover {
+      cursor: pointer;
+      color: $text-hover-color;
+    }
+  }
+
+  .join-us {
+    height: 100%;
+    width: 420px;
+    margin-right: 240px;
+
+    @media (max-width: $screen-lg-min) {
+      width: 350px;
+      margin-right: 200px;
+    }
+
+    @media (max-width: $screen-md-min) {
+      width: 284px;
+      margin-right: 172px;
+    }
+
+    @media (max-width: $screen-sm-min) {
+      width: 336px;
+      margin-right: 80px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      height: auto;
+      width: 284px;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  .hiring-now {
+    height: 100%;
+    width: 420px;
+
+    @media (max-width: $screen-lg-min) {
+      width: 350px;
+    }
+
+    @media (max-width: $screen-md-min) {
+      width: 284px;
+    }
+
+    @media (max-width: $screen-sm-min) {
+      width: 336px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+      width: 284px;
+    }
+
+    .jobs {
+      font-family: GrotesqueBold;
+      height: 55px;
+      width: inherit;
+      margin-left: 52px;
+
+      .job {
+        margin-bottom: 12px;
+        position: relative;
+
+        @media (max-width: $screen-lg-min) {
+          font-size: 16px;
+        }
+
+        @media (max-width: $screen-md-min) {
+          font-size: 18px;
+        }
+
+        @media (max-width: $screen-sm-min) {
+          font-size: 20px;
+        }
+
+        @media (max-width: $screen-xs-min) {
+          font-size: 18px;
+        }
+
+        &:hover {
+          .name {
+            cursor: pointer;
+            color: $text-hover-color;
+
+            &:before {
+              color: black;
+            }
+          }
+        }
+
+        .name {
+          line-height: 32px;
+          font-size: 28px;
+          margin-bottom: 8px;
+
+          @media (max-width: $screen-lg-min) {
+            font-size: 22px;
+          }
+
+          @media (max-width: $screen-md-min) {
+            font-size: 20px;
+          }
+
+          @media (max-width: $screen-sm-min) {
+            font-size: 18px;
+          }
+
+          @media (max-width: $screen-xs-min) {
+            font-size: 16px;
+          }
+
+          &:before {
+            content: "ー";
+            position: absolute;
+            left: -48px;
+            top: auto;
+            bottom: auto;
+          }
+        }
+
+        .location {
+          color: $location-color;
+          text-transform: uppercase;
+          line-height: normal;
+          font-size: 12px;
+
+          @media (max-width: $screen-lg-min) {
+            font-size: 11px;
+          }
+        }
+      }
+
+      .hr {
+        margin-top: 35px;
+        margin-bottom: 28px;
+        width: 130px;
+        border-bottom: 1px solid $jobs-section-hr-color;
+
+        @media (max-width: $screen-lg-min) {
+          margin-top: 24px;
+          margin-bottom: 22px;
+        }
+
+        @media (max-width: $screen-md-min) {
+          margin-top: 24px;
+          margin-bottom: 16px;
+        }
+
+        @media (max-width: $screen-xs-min) {
+          margin-top: 24px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .more {
+        font-family: GrotesqueBold;
+        line-height: 32px;
+        font-size: 28px;
+        position: relative;
+
+        @media (max-width: $screen-lg-min) {
+          font-size: 22px;
+        }
+
+        @media (max-width: $screen-md-min) {
+          font-size: 20px;
+        }
+
+        @media (max-width: $screen-sm-min) {
+          font-size: 18px;
+        }
+
+        @media (max-width: $screen-xs-min) {
+          font-size: 16px;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: $text-hover-color;
+          width: 76px;
+          border-bottom: 1px solid $text-hover-color;
+
+          &:before {
+            cursor: pointer;
+            color: $white;
+            background-color: $text-hover-color;
+            border: 1px solid $text-hover-color;
+          }
+        }
+
+        &:before {
+          content: "+";
+          height: 24px;
+          width: 24px;
+          border: 1px solid $location-color;
+          position: absolute;
+          left: -48px;
+          top: auto;
+          bottom: auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
 }

@@ -58,6 +58,7 @@ module.exports = {
       '~image': path.resolve(process.cwd(), 'assets/img'),
       '~components': path.resolve(process.cwd(), 'src/components'),
       '~containers': path.resolve(process.cwd(), 'src/containers'),
+      '~constants': path.resolve(process.cwd(), 'src/constants'),
     },
   },
   plugins:[
@@ -68,5 +69,6 @@ module.exports = {
   ],
   devServer: {
     hot: true
-  }
+  },
+  performance: { hints: false },
 };
