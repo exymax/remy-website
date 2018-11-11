@@ -7,23 +7,25 @@ import './styles.scss';
 
 class BodyContent extends React.PureComponent {
   static propTypes = {
-    activeJob: PropTypes.bool.isRequired,
-    jobs: PropTypes.func.isRequired,
-    closePanel: PropTypes.func.isRequired,
+    activeJob: PropTypes.number,
+    jobs: PropTypes.array.isRequired,
+    onCloseHiringPanel: PropTypes.func.isRequired,
+    baseComponent: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       jobs,
       activeJob,
-      closePanel,
+      onCloseHiringPanel,
+      baseComponent,
     } = this.props;
 
     const job = _.find(jobs, function(job) {
       return job.id === activeJob;
     });
 
-    const { component: Component } = job;
+    const Component = job ? job.component : baseComponent;
 
     return (
       <div className="body-content">
@@ -31,7 +33,7 @@ class BodyContent extends React.PureComponent {
           <img
             src={close}
             className="close"
-            onClick={closePanel}
+            onClick={onCloseHiringPanel}
           />
         </div>
 

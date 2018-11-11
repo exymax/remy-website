@@ -1,10 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { jobs } from '~constants';
+import Job from './Job';
 import './styles.scss';
 
 class HiringSection extends React.PureComponent {
+	static propTypes = {
+    onOpenHiringPanel: PropTypes.func.isRequired,
+	};
+
+  handleOpenHiringPanel = () => {
+  	const { onOpenHiringPanel } = this.props;
+
+    onOpenHiringPanel(null);
+	};
+
 	render() {
+		const { onOpenHiringPanel } = this.props;
+
 		return (
 			<div className="hiring-section">
         <div className="join-us">
@@ -23,17 +37,20 @@ class HiringSection extends React.PureComponent {
 					<div className="text">We are looking for the brightest minds to help us grow. Please see our open positions below.</div>
 
 					<div className="jobs">
-						{jobs.map(({ name, location }) => (
-							<div className="job">
-								<div className="name">{name}</div>
-
-								<div className="location">{location}</div>
-							</div>
+						{jobs.map((job) => (
+							<Job
+								key={job.id}
+								job={job}
+                onOpenHiringPanel={onOpenHiringPanel}
+							/>
 						))}
 
 						<div className="hr" />
 
-						<div className="more">
+						<div
+							className="more"
+							onClick={this.handleOpenHiringPanel}
+						>
 							8 more →
 						</div>
 					</div>
