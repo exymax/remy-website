@@ -7,16 +7,16 @@ import './styles.scss';
 
 class Sidebar extends React.PureComponent {
   static propTypes = {
-    activeJob: PropTypes.number.isRequired,
+    activeJob: PropTypes.number,
     jobs: PropTypes.array.isRequired,
-    changeActiveJob: PropTypes.func.isRequired,
+    onOpenHiringPanel: PropTypes.func.isRequired,
   };
 
   render() {
     const {
       activeJob,
       jobs,
-      changeActiveJob,
+      onOpenHiringPanel,
     } = this.props;
 
     return (
@@ -36,7 +36,7 @@ class Sidebar extends React.PureComponent {
                   key={id}
                   job={job}
                   isActive={isActive}
-                  changeActiveJob={changeActiveJob}
+                  onOpenHiringPanel={onOpenHiringPanel}
                 />
               );
             })}

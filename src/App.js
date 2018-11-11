@@ -5,28 +5,42 @@ import HiringPanel from '~containers/HiringPanel';
 
 class App extends React.PureComponent {
   state = {
+    activeJob: 1,
     isOpenHiringPanel: false,
   };
 
-  toggleOpenHiringPanel = () => {
-    const { isOpenHiringPanel } = this.state;
+  handleOpenHiringPanel = (id) => {
+     this.setState({
+      activeJob: id,
+      isOpenHiringPanel: true,
+    });
+  };
 
+  handleCloseHiringPanel = () => {
     this.setState({
-      isOpenHiringPanel: !isOpenHiringPanel,
+      activeJob: null,
+      isOpenHiringPanel: false,
     });
   };
 
   render() {
-    const { isOpenHiringPanel } = this.state;
+    const {
+      activeJob,
+      isOpenHiringPanel,
+    } = this.state;
 
     if (isOpenHiringPanel) {
       return (
-        <HiringPanel closePanel={this.toggleOpenHiringPanel} />
+        <HiringPanel
+          activeJob={activeJob}
+          onOpenHiringPanel={this.handleOpenHiringPanel}
+          onCloseHiringPanel={this.handleCloseHiringPanel}
+        />
       );
     }
 
     return (
-      <Landing />
+      <Landing onOpenHiringPanel={this.handleOpenHiringPanel} />
     );
   }
 }
