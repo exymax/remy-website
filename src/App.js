@@ -5,7 +5,7 @@ import HiringPanel from '~containers/HiringPanel';
 
 class App extends React.PureComponent {
   state = {
-    activeJob: 1,
+    activeJob: null,
     isOpenHiringPanel: false,
   };
 

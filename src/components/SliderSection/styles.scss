@@ -102,6 +102,7 @@
 
       .plus {
         font-family: GrotesqueBold;
+        cursor: pointer;
 
         &:hover {
           color: $text-hover-color;
