@@ -102,6 +102,10 @@
 
       .plus {
         font-family: GrotesqueBold;
+
+        &:hover {
+          color: $text-hover-color;
+        }
       }
 
       @media (max-width: $screen-lg-min) {

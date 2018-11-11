@@ -5,7 +5,7 @@ import HiringPanel from '~containers/HiringPanel';
 
 class App extends React.PureComponent {
   state = {
-    isOpenHiringPanel: true,
+    isOpenHiringPanel: false,
   };
 
   toggleOpenHiringPanel = () => {
