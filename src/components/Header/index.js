@@ -7,6 +7,7 @@ class Header extends React.PureComponent {
   render() {
     return (
       <div className="header">
+        <div className="gradient-pattern" />
         <img
           src={logo}
           className="logo"
@@ -17,6 +18,10 @@ class Header extends React.PureComponent {
         </div>
 
         <div className="discover-more">
+          <div className="ball-section">
+            <div className="ball" />
+          </div>
+
           discover more
         </div>
 
