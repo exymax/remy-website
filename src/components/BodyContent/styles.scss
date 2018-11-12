@@ -1,3 +1,5 @@
+@import "~styles/variables.scss";
+
 .body-content {
   height: calc(100% - 124px);
   width: calc(100% - 355px);
@@ -9,8 +11,10 @@
     position: fixed;
     top: 0;
     right: 0;
+    background-color: $white;
 
     .close {
+      cursor: pointer;
       position: absolute;
       top: 48px;
       right: 48px;
