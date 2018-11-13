@@ -51,7 +51,10 @@ class Dropdown extends React.PureComponent {
         >
           {label}
           {' '}
-          <img src={caret} />
+          <img
+            src={caret}
+            className="caret"
+          />
         </div>
 
         {isOpenDropdown && (

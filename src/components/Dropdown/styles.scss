@@ -1,13 +1,9 @@
 @import "~styles/variables.scss";
 
 .dropdown {
-  font-family: Grotesque;
+  font-family: GrotesqueBold;
   line-height: 36px;
   font-size: 16px;
-
-  position: absolute;
-  top: 60px;
-  left: 430px;
 
   .dropdown-menu {
     height: calc(252px - 20px - 20px);
@@ -46,7 +42,6 @@
 
   .dropdown-button {
     cursor: pointer;
-    font-family: GrotesqueBold;
     line-height: 32px;
     font-size: 16px;
   }
