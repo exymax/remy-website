@@ -160,6 +160,8 @@
     width: 43%;
     flex-grow: 1;
     position: relative;
+    left: -1px;
+    right: -1px;
 
     @media (max-width: $screen-sm-min) {
       height: 500px;
