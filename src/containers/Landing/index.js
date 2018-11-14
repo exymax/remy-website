@@ -11,7 +11,10 @@ export default ({ onOpenHiringPanel, height }) => (
     <Header height={height} />
     <AboutSection height={height} />
     <SliderSection height={height} />
-    <HiringSection onOpenHiringPanel={onOpenHiringPanel} />
+    <HiringSection
+      height={height}
+      onOpenHiringPanel={onOpenHiringPanel}
+    />
     <Footer />
   </div>
 );
