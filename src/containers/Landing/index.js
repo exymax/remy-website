@@ -6,11 +6,11 @@ import SliderSection from '~components/SliderSection';
 import HiringSection from '~components/HiringSection';
 import Footer from '~components/Footer';
 
-export default ({ onOpenHiringPanel }) => (
+export default ({ onOpenHiringPanel, height }) => (
   <div>
-    <Header />
-    <AboutSection />
-    <SliderSection />
+    <Header height={height} />
+    <AboutSection height={height} />
+    <SliderSection height={height} />
     <HiringSection onOpenHiringPanel={onOpenHiringPanel} />
     <Footer />
   </div>
