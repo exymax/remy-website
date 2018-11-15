@@ -6,18 +6,22 @@ import './styles.scss';
 
 class Header extends React.PureComponent {
   static propTypes = {
-    height: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
   };
 
   render() {
-    const { height } = this.props;
+    const { height, width } = this.props;
 
     return (
       <div
         className="header"
         style={{ height }}
       >
-        <div className="gradient-pattern" />
+        <div
+          className="gradient-pattern"
+          style={{ height, width: width - 15 }}
+        />
         <img
           src={logo}
           className="logo"
