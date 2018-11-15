@@ -1,0 +1,54 @@
+@import "~styles/variables.scss";
+
+.popup {
+  z-index: 5;
+
+  .panel {
+    z-index: 3;
+    height: 652px;
+    width: 588px;
+    background-color: $white;
+
+    position: fixed;
+    top: calc((100% - 652px) / 2);
+    left: calc((100% - 588px) / 2);
+    bottom: calc((100% - 652px) / 2);
+    right: calc((100% - 588px) / 2);
+
+    .close {
+      cursor: pointer;
+      position: absolute;
+      top: 50px;
+      right: 50px;
+
+      @media (max-width: $screen-xs-min) {
+        top: 24px;
+        right: 20px;
+      }
+    }
+
+    @media (max-width: $screen-xs-min) {
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .overlay {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(18, 20, 24, 0.9);
+    backdrop-filter: blur(13.5914px);
+
+    @media (max-width: $screen-xs-min) {
+      display: none;
+    }
+  }
+}

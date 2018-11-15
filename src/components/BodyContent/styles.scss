@@ -1,19 +1,19 @@
+@import "~styles/variables.scss";
+
 .body-content {
-  height: calc(100% - 124px);
-  width: calc(100% - 355px);
-  margin: 124px 0 0 355px;
+  &:not(.inactive-job) {
+    height: calc(100% - 124px);
+    width: calc(100% - 355px);
+    margin: 124px 0 0 355px;
 
-  .toolbar {
-    height: 124px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-
-    .close {
-      position: absolute;
-      top: 48px;
-      right: 48px;
+    @media (max-width: $screen-xs-min) {
+      margin: 67px 0 0;
+      height: auto;
+      width: auto;
     }
+  }
+
+  .inactive-job {
+    display: none;
   }
 }

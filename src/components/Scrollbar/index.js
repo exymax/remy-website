@@ -12,7 +12,7 @@ class Scrollbar extends React.PureComponent {
     const { children } = this.props;
 
     return (
-      <PerfectScrollbar>
+      <PerfectScrollbar {...this.props}>
         {children}
       </PerfectScrollbar>
     );

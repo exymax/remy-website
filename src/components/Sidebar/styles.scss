@@ -1,30 +1,21 @@
 @import "~styles/variables.scss";
 
 .sidebar {
-  height: 100%;
+  height: calc(100% - 124px);
   width: 354px;
   position: fixed;
-  top: 0;
+  top: 124px;
   bottom: 0;
   left: 0;
   background-color: $white;
   font-family: Grotesque;
-
-  .title {
-    height: 124px;
-    width: 100%;
-    text-transform: uppercase;
-    font-family: GrotesqueBold;
-    font-size: 42px;
-    line-height: 48px;
-    justify-content: flex-end;
-  }
+  z-index: 1;
 
   .container {
     height: 100%;
     width: 100%;
     padding: 0;
-    border-right: 1px solid #EDEDED;
+    border-right: 1px solid $border;
 
     .item {
       cursor: pointer;
@@ -49,6 +40,54 @@
       &.active {
         background-color: $sidebar-item-hover;
       }
+    }
+  }
+}
+
+@media (max-width: $screen-xs-min) {
+  .sidebar {
+    &:not(.active-job):not(.is-scrolled) {
+      top: 118px;
+      height: 100%;
+      width: 100%;
+      background-color: $white;
+      font-family: Grotesque;
+
+      .container {
+        border-right: 0;
+        padding-top: 12px;
+
+        .item {
+          height: calc(68px - 12px - 16px);
+          width: calc(100% - 20px - 20px);
+          padding: 12px 20px 16px 20px;
+          position: relative;
+
+          &:after {
+            content: ' ';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 0;
+            border-bottom: 1px solid $border;
+          }
+
+          .name {
+            font-family: GrotesqueBold;
+            font-size: 16px;
+            line-height: 16px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    &.active-job {
+      display: none;
+    }
+
+    &.is-scrolled {
+      top: 67px;
     }
   }
 }

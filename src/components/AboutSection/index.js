@@ -2,8 +2,11 @@ import React from 'react';
 
 import './styles.scss';
 
-export default () => (
-	<div className="about-us">
+export default ({ height }) => (
+	<div
+		className="about-us"
+		style={{ height }}
+	>
 		<div className="title">
       what we believe
 		</div>

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import classNames from 'classnames';
 
-import close from '~image/close.svg';
 import './styles.scss';
 
 class BodyContent extends React.PureComponent {
   static propTypes = {
     activeJob: PropTypes.number,
     jobs: PropTypes.array.isRequired,
-    onCloseHiringPanel: PropTypes.func.isRequired,
     baseComponent: PropTypes.func.isRequired,
   };
 
@@ -17,7 +16,6 @@ class BodyContent extends React.PureComponent {
     const {
       jobs,
       activeJob,
-      onCloseHiringPanel,
       baseComponent,
     } = this.props;
 
@@ -27,16 +25,10 @@ class BodyContent extends React.PureComponent {
 
     const Component = job ? job.component : baseComponent;
 
-    return (
-      <div className="body-content">
-        <div className="toolbar">
-          <img
-            src={close}
-            className="close"
-            onClick={onCloseHiringPanel}
-          />
-        </div>
+    const className = classNames("body-content", { "inactive-job": !activeJob });
 
+    return (
+      <div className={className}>
         <Component />
       </div>
     );
