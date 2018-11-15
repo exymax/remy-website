@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ApplyToUs from '~components/ApplyToUs';
 import { jobs } from '~constants';
 import Job from './Job';
 import './styles.scss';
@@ -48,11 +49,11 @@ class HiringSection extends React.PureComponent {
 					<div className="text"><strong className="text-hovered">Get in touch</strong> if you want to help us explore what robotics can serve up next.</div>
 				</div>
 
-				<div className="apply-to-us">
-					<div className="title">want to help us explore what robotics can serve up next?</div>
+        <div className="apply-to-us">
+          <div className="title">want to help us explore what robotics can serve up next?</div>
 
-					<div className="button">apply to us</div>
-				</div>
+          <ApplyToUs />
+        </div>
 			</div>
 		);
 	}

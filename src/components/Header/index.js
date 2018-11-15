@@ -6,7 +6,7 @@ import './styles.scss';
 
 class Header extends React.PureComponent {
   static propTypes = {
-    height: PropTypes.string.isRequired,
+    height: PropTypes.number.isRequired,
   };
 
   render() {

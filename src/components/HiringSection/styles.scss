@@ -210,7 +210,6 @@
   }
 
   .apply-to-us {
-    cursor: pointer;
     box-sizing: border-box;
     height: 456px;
     width: 528px;
@@ -268,35 +267,6 @@
         font-size: 16px;
         line-height: 24px;
         margin-bottom: 35px;
-      }
-    }
-
-    .button {
-      text-transform: uppercase;
-      height: 56px;
-      width: 310px;
-      border: 1.6px solid #000000;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      @media (max-width: $screen-lg-min) {
-        height: 48px;
-        width: 255px;
-      }
-
-      @media (max-width: $screen-md-min) {
-        height: 44px;
-        width: 208px;
-      }
-
-      @media (max-width: $screen-sm-min) {
-        width: 218px;
-      }
-
-      @media (max-width: $screen-xs-min) {
-        width: 200px;
       }
     }
   }
