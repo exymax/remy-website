@@ -6,6 +6,7 @@ import HiringPanel from '~containers/HiringPanel';
 class App extends React.PureComponent {
   state = {
     height: 0,
+    width: 0,
     activeJob: null,
     isOpenHiringPanel: false,
   };
@@ -22,6 +23,7 @@ class App extends React.PureComponent {
   handleResize = () => {
     this.setState({
       height: window.innerHeight,
+      width: window.innerWidth,
     });
   };
 
@@ -54,6 +56,7 @@ class App extends React.PureComponent {
   render() {
     const {
       height,
+      width,
       activeJob,
       isOpenHiringPanel,
     } = this.state;
@@ -72,6 +75,7 @@ class App extends React.PureComponent {
     return (
       <Landing
         height={height}
+        width={width}
         onOpenHiringPanel={this.handleOpenHiringPanel}
       />
     );

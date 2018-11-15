@@ -29,3 +29,92 @@
     width: 200px;
   }
 }
+
+.task {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding: 42px 152px 68px 76px;
+
+  @media (max-width: $screen-xs-min) {
+    padding: 24px 20px 70px 20px;
+  }
+
+  .task-title {
+    line-height: 42px;
+    font-size: 36px;
+    font-family: GrotesqueBold;
+    margin-bottom: 40px;
+
+    @media (max-width: $screen-xs-min) {
+      line-height: 21px;
+      font-size: 28px;
+      margin-bottom: 46px;
+    }
+  }
+
+  .scheme {
+    height: 198px;
+    width: 340px;
+    margin-bottom: 44px;
+
+    @media (max-width: $screen-xs-min) {
+      height: 166px;
+      width: 280px;
+      margin-bottom: 38px;
+    }
+  }
+
+  .answer {
+    height: 112px;
+    width: 168px;
+    margin-left: 64px;
+    margin-bottom: 52px;
+    position: relative;
+
+    @media (max-width: $screen-xs-min) {
+      height: 112px;
+      width: 168px;
+      margin-bottom: 50px;
+    }
+
+    .input {
+      height: 44px;
+      width: 56px;
+      position: absolute;
+      right: 20%;
+      text-align: center;
+
+      @media (max-width: $screen-xs-min) {
+        height: 44px;
+        width: 56px;
+      }
+
+      &.input-top {
+        top: 0;
+      }
+
+      &.input-bottom {
+        bottom: 0;
+      }
+    }
+  }
+
+  .answer-and-continue {
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 56px;
+    width: 360px;
+    border: 1.6px solid #000000;
+    background-color: #000000;
+    color: $white;
+    font-size: 14px;
+    line-height: 20px;
+
+    @media (max-width: $screen-xs-min) {
+      height: 44px;
+      width: 280px;
+      font-size: 13px;
+    }
+  }
+}

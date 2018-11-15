@@ -8,18 +8,32 @@ class Popup extends React.PureComponent {
   static propTypes = {
     button: PropTypes.node.isRequired,
     children: PropTypes.node.isRequired,
+    onOpen: PropTypes.func,
+    onClose: PropTypes.func,
   };
 
   state = {
     isOpen: false,
   };
 
-  toggleOpenPopup = () => {
-    const { isOpen } = this.state;
+  handleOpenPopup = () => {
+    const { onOpen } = this.props;
 
     this.setState({
-      isOpen: !isOpen,
+      isOpen: true,
     });
+
+    onOpen && onOpen();
+  };
+
+  handleClosePopup = () => {
+    const { onClose } = this.props;
+
+    this.setState({
+      isOpen: false,
+    });
+
+    onClose && onClose();
   };
 
   render() {
@@ -31,7 +45,7 @@ class Popup extends React.PureComponent {
 
     return (
       <div className="popup">
-        <div onClick={this.toggleOpenPopup}>
+        <div onClick={this.handleOpenPopup}>
           {button}
         </div>
 
@@ -42,7 +56,7 @@ class Popup extends React.PureComponent {
             <div className="close">
               <img
                 src={close}
-                onClick={this.toggleOpenPopup}
+                onClick={this.handleClosePopup}
               />
             </div>
           </div>
@@ -51,7 +65,7 @@ class Popup extends React.PureComponent {
         {isOpen && (
           <div
             className="overlay"
-            onClick={this.toggleOpenPopup}
+            onClick={this.handleClosePopup}
           />
         )}
       </div>

@@ -8,14 +8,40 @@ import './styles.scss';
 class ApplyToUs extends React.PureComponent {
   state = {
     step: 1,
+    topValue: null,
+    bottomValue: null,
+  };
+
+  handleChangeTop = ({ target: { value }}) => {
+    this.setState({
+      topValue: value,
+    });
+  };
+
+  handleChangeBottom = ({ target: { value }}) => {
+    this.setState({
+      bottomValue: value,
+    });
   };
 
   switchStep = () => {
-    const { step } = this.state;
+    const {
+      step,
+      topValue,
+      bottomValue,
+    } = this.state;
 
     switch (step) {
       case 1:
-        return <Task />;
+        return (
+          <Task
+            topValue={topValue}
+            bottomValue={bottomValue}
+            onNextStep={this.handleNextStep}
+            onChangeTop={this.handleChangeTop}
+            onChangeBottom={this.handleChangeBottom}
+          />
+        );
 
       case 2:
         return <Form />;
@@ -23,6 +49,18 @@ class ApplyToUs extends React.PureComponent {
       default:
         return null;
     }
+  };
+
+  handleNextStep = () => {
+    this.setState({
+      step: 2,
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      step: 1,
+    });
   };
 
   render() {
@@ -33,6 +71,7 @@ class ApplyToUs extends React.PureComponent {
         button={(
           <div className="button">apply to us</div>
         )}
+        onClose={this.handleClose}
       >
         {component}
       </Popup>
