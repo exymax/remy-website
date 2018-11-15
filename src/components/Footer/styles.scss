@@ -1,7 +1,8 @@
 @import "~styles/variables.scss";
 
 .footer {
-  height: 545px;
+  box-sizing: border-box;
+  height: 660px;
   background-color: $app-theme-color;
   padding: 95px 0 20px 180px;
   color: $white;
@@ -9,22 +10,21 @@
   overflow: hidden;
 
   @media (max-width: $screen-lg-min) {
-    height: 440px;
+    height: 540px;
     padding: 80px 0 20px 150px;
   }
 
   @media (max-width: $screen-md-min) {
-    height: 440px;
-    padding: 80px 0 20px 125px;
+    padding-left: 125px;
   }
 
   @media (max-width: $screen-sm-min) {
-    height: 400px;
+    height: 500px;
     padding: 60px 0 30px 40px;
   }
 
   @media (max-width: $screen-xs-min) {
-    height: 885px;
+    height: auto;
     padding: 45px 0 20px 20px;
   }
 

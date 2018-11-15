@@ -5,15 +5,16 @@
 
   .panel {
     z-index: 3;
-    height: 652px;
+    min-height: 652px;
+    max-height: 832px;
     width: 588px;
     background-color: $white;
 
     position: fixed;
     top: calc((100% - 652px) / 2);
     left: calc((100% - 588px) / 2);
-    bottom: calc((100% - 652px) / 2);
     right: calc((100% - 588px) / 2);
+    margin: auto;
 
     .close {
       cursor: pointer;

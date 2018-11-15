@@ -6,46 +6,25 @@ import './styles.scss';
 
 class Popup extends React.PureComponent {
   static propTypes = {
+    isOpen: PropTypes.bool.isRequired,
     button: PropTypes.node.isRequired,
     children: PropTypes.node.isRequired,
-    onOpen: PropTypes.func,
-    onClose: PropTypes.func,
-  };
-
-  state = {
-    isOpen: false,
-  };
-
-  handleOpenPopup = () => {
-    const { onOpen } = this.props;
-
-    this.setState({
-      isOpen: true,
-    });
-
-    onOpen && onOpen();
-  };
-
-  handleClosePopup = () => {
-    const { onClose } = this.props;
-
-    this.setState({
-      isOpen: false,
-    });
-
-    onClose && onClose();
+    onOpen: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
   };
 
   render() {
-    const { isOpen } = this.state;
     const {
+      isOpen,
       button,
       children,
+      onOpen,
+      onClose,
     } = this.props;
 
     return (
       <div className="popup">
-        <div onClick={this.handleOpenPopup}>
+        <div onClick={onOpen}>
           {button}
         </div>
 
@@ -56,7 +35,7 @@ class Popup extends React.PureComponent {
             <div className="close">
               <img
                 src={close}
-                onClick={this.handleClosePopup}
+                onClick={onClose}
               />
             </div>
           </div>
@@ -65,7 +44,7 @@ class Popup extends React.PureComponent {
         {isOpen && (
           <div
             className="overlay"
-            onClick={this.handleClosePopup}
+            onClick={onClose}
           />
         )}
       </div>
