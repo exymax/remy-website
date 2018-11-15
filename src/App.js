@@ -39,6 +39,18 @@ class App extends React.PureComponent {
     });
   };
 
+  handleChooseOtherJob = (id) => {
+    this.setState({
+      activeJob: id,
+    });
+  };
+
+  handleCloseCurrentJob = () => {
+    this.setState({
+      activeJob: null,
+    });
+  };
+
   render() {
     const {
       height,
@@ -50,8 +62,9 @@ class App extends React.PureComponent {
       return (
         <HiringPanel
           activeJob={activeJob}
-          onOpenHiringPanel={this.handleOpenHiringPanel}
           onCloseHiringPanel={this.handleCloseHiringPanel}
+          onChooseOtherJob={this.handleChooseOtherJob}
+          onCloseCurrentJob={this.handleCloseCurrentJob}
         />
       );
     }

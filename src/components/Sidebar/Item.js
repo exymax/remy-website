@@ -6,16 +6,16 @@ class Item extends React.PureComponent {
   static propTypes = {
     job: PropTypes.object.isRequired,
     isActive: PropTypes.bool.isRequired,
-    onOpenHiringPanel: PropTypes.func.isRequired,
+    onChooseOtherJob: PropTypes.func.isRequired,
   };
 
-  handleOpenHiringPanel = () => {
+  handleChooseOtherJob = () => {
     const {
       job: { id },
-      onOpenHiringPanel,
+      onChooseOtherJob,
     } = this.props;
 
-    onOpenHiringPanel(id)
+    onChooseOtherJob(id)
   };
 
   render() {
@@ -31,7 +31,7 @@ class Item extends React.PureComponent {
     return (
       <div
         className={className}
-        onClick={this.handleOpenHiringPanel}
+        onClick={this.handleChooseOtherJob}
       >
         <div className="name">{name}</div>
         <div className="location">{location}</div>
