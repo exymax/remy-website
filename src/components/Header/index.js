@@ -1,12 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import logo from '~image/Remy_logo_white.svg';
 import './styles.scss';
 
 class Header extends React.PureComponent {
+  static propTypes = {
+    height: PropTypes.string.isRequired,
+  };
+
   render() {
+    const { height } = this.props;
+
     return (
-      <div className="header">
+      <div
+        className="header"
+        style={{ height }}
+      >
+        <div className="gradient-pattern" />
         <img
           src={logo}
           className="logo"
@@ -17,6 +28,10 @@ class Header extends React.PureComponent {
         </div>
 
         <div className="discover-more">
+          <div className="ball-section">
+            <div className="ball" />
+          </div>
+
           discover more
         </div>
 

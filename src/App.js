@@ -5,8 +5,24 @@ import HiringPanel from '~containers/HiringPanel';
 
 class App extends React.PureComponent {
   state = {
+    height: 0,
     activeJob: null,
     isOpenHiringPanel: false,
+  };
+
+  componentDidMount = () => {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.handleResize);
+  };
+
+  handleResize = () => {
+    this.setState({
+      height: window.innerHeight,
+    });
   };
 
   handleOpenHiringPanel = (id) => {
@@ -25,6 +41,7 @@ class App extends React.PureComponent {
 
   render() {
     const {
+      height,
       activeJob,
       isOpenHiringPanel,
     } = this.state;
@@ -40,7 +57,10 @@ class App extends React.PureComponent {
     }
 
     return (
-      <Landing onOpenHiringPanel={this.handleOpenHiringPanel} />
+      <Landing
+        height={height}
+        onOpenHiringPanel={this.handleOpenHiringPanel}
+      />
     );
   }
 }
