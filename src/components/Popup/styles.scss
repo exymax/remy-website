@@ -3,13 +3,15 @@
 .popup {
   z-index: 5;
 
-  .wrapper {
-    z-index: 3;
+  .overlay {
+    z-index: 2;
     position: fixed;
     top: 0;
-    left: calc((100% - 588px) / 2);
-    right: calc((100% - 588px) / 2);
     bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(18, 20, 24, 0.9);
+    backdrop-filter: blur(13.5914px);
 
     .panel {
       min-height: 652px;
@@ -38,21 +40,6 @@
         bottom: 0;
         right: 0;
       }
-    }
-  }
-
-  .overlay {
-    z-index: 2;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(18, 20, 24, 0.9);
-    backdrop-filter: blur(13.5914px);
-
-    @media (max-width: $screen-xs-min) {
-      display: none;
     }
   }
 }
