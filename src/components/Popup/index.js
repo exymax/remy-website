@@ -13,6 +13,10 @@ class Popup extends React.PureComponent {
     onClose: PropTypes.func.isRequired,
   };
 
+  handleStopPropagation = (event) => {
+    event.stopPropagation();
+  };
+
   render() {
     const {
       isOpen,
@@ -29,8 +33,11 @@ class Popup extends React.PureComponent {
         </div>
 
         {isOpen && (
-          <div className="wrapper flex-both-centered">
-            <div className="panel">
+          <div
+            className="overlay flex-both-centered"
+            onClick={onClose}
+          >
+            <div className="panel" onClick={this.handleStopPropagation}>
               {children}
 
               <div className="close">
@@ -41,13 +48,6 @@ class Popup extends React.PureComponent {
               </div>
             </div>
           </div>
-        )}
-
-        {isOpen && (
-          <div
-            className="overlay"
-            onClick={onClose}
-          />
         )}
       </div>
     );
