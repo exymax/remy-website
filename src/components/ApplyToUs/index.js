@@ -15,6 +15,7 @@ class ApplyToUs extends React.PureComponent {
     number: '',
     description: '',
     file: '',
+    fileName: '',
     isOpen: false,
   };
 
@@ -54,10 +55,14 @@ class ApplyToUs extends React.PureComponent {
     });
   };
 
-  handleChangeFile = ({ target: { size, value }}) => {
+  handleChangeFile = ({ target }) => {
+    const { size, value, files } = target;
+    const name = files[0].name;
+
     if (size < 3001) {
       this.setState({
         file: value,
+        fileName: name,
       });
     }
   };
@@ -65,6 +70,7 @@ class ApplyToUs extends React.PureComponent {
   handleCancelFile = () => {
     this.setState({
       file: '',
+      fileName: '',
     });
   };
 
@@ -78,6 +84,7 @@ class ApplyToUs extends React.PureComponent {
       number,
       description,
       file,
+      fileName,
     } = this.state;
 
     switch (step) {
@@ -100,6 +107,7 @@ class ApplyToUs extends React.PureComponent {
             number={number}
             description={description}
             file={file}
+            fileName={fileName}
             onChangeName={this.handleChangeName}
             onChangeEmail={this.handleChangeEmail}
             onChangeNumber={this.handleChangeNumber}
@@ -135,6 +143,14 @@ class ApplyToUs extends React.PureComponent {
     this.setState({
       isOpen: false,
       step: 1,
+      topValue: '',
+      bottomValue: '',
+      name: '',
+      email: '',
+      number: '',
+      description: '',
+      file: '',
+      fileName: '',
     });
   };
 

@@ -40,7 +40,7 @@ class Task extends React.PureComponent {
       }
     } else {
       this.setState({
-        errorMessage: 'Fields should be fill.',
+        errorMessage: 'Please, fill in the fields.',
         isError: true,
       });
 

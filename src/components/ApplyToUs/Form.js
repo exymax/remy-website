@@ -10,6 +10,7 @@ class Form extends React.PureComponent {
     number: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     file: PropTypes.string.isRequired,
+    fileName: PropTypes.string.isRequired,
     onChangeName: PropTypes.func.isRequired,
     onChangeEmail: PropTypes.func.isRequired,
     onChangeNumber: PropTypes.func.isRequired,
@@ -75,6 +76,7 @@ class Form extends React.PureComponent {
       number,
       description,
       file,
+      fileName,
       onChangeName,
       onChangeEmail,
       onChangeNumber,
@@ -125,6 +127,7 @@ class Form extends React.PureComponent {
 
         <UploadComponent
           file={file}
+          fileName={fileName}
           onChangeFile={onChangeFile}
           onCancelFile={onCancelFile}
         />

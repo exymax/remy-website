@@ -9,26 +9,25 @@ import close from '~image/close.svg';
 class UploadComponent extends React.PureComponent {
   static propTypes = {
     file: PropTypes.string.isRequired,
+    fileName: PropTypes.string.isRequired,
     onChangeFile: PropTypes.func.isRequired,
     onCancelFile: PropTypes.func.isRequired,
   };
 
-  handleCancelFile = (e) => {
+  handleCancelFile = () => {
     const { onCancelFile} = this.props;
 
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
     onCancelFile();
   };
 
   switchLabel = () => {
-    const { file } = this.props;
+    const { fileName } = this.props;
 
-    if (file.length) {
+    if (fileName.length) {
       return (
         <div className="is-uploaded">
           <img src={fileIcon} className="file" />
-          <span className="file-name">{file}</span>
+          <span className="file-name">{fileName}</span>
           <img
             src={close}
             className="file-cancel"
