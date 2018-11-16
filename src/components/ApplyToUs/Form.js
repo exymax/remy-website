@@ -87,7 +87,7 @@ class Form extends React.PureComponent {
 
     return (
       <div className="form">
-        <div className="form-title">Your response</div>
+        <div className="form-title">Tell us about yourself</div>
 
         <div className="form-group">
           <input

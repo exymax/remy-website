@@ -161,7 +161,7 @@ class ApplyToUs extends React.PureComponent {
     return (
       <Popup
         button={(
-          <div className="button">apply to us</div>
+          <div className="button">send your cv</div>
         )}
         onOpen={this.handleOpenPopup}
         onClose={this.handleClosePopup}
