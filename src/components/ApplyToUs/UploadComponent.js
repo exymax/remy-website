@@ -38,11 +38,13 @@ class UploadComponent extends React.PureComponent {
       );
     } else {
       return (
-        <div>
-          <img src={clip} className="clip" />
-          <span className="attach">Attach your CV</span>
-          Max file size – 3Mb
-        </div>
+        <label htmlFor="file">
+          <div>
+            <img src={clip} className="clip" />
+            <span className="attach">Attach your CV</span>
+            Max file size – 3Mb
+          </div>
+        </label>
       );
     }
   };
@@ -51,10 +53,9 @@ class UploadComponent extends React.PureComponent {
     const {
       file,
       onChangeFile,
-      onCancelFile,
     } = this.props;
     const label = this.switchLabel();
-console.log(file);
+
     return (
       <div className="file-upload">
         <input
@@ -65,9 +66,8 @@ console.log(file);
           value={file}
           onChange={onChangeFile}
         />
-        <label for="file">
-          {label}
-        </label>
+
+        {label}
       </div>
     );
   }

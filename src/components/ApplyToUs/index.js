@@ -54,10 +54,12 @@ class ApplyToUs extends React.PureComponent {
     });
   };
 
-  handleChangeFile = ({ target: { value }}) => {
-    this.setState({
-      file: value,
-    });
+  handleChangeFile = ({ target: { size, value }}) => {
+    if (size < 3001) {
+      this.setState({
+        file: value,
+      });
+    }
   };
 
   handleCancelFile = () => {
