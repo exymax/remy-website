@@ -13,6 +13,11 @@ class Task extends React.PureComponent {
     onChangeBottom: PropTypes.func.isRequired,
   };
 
+  state = {
+    errorMessage: '',
+    isError: false,
+  };
+
   handleNextStep = () => {
     const {
       onNextStep,
@@ -20,9 +25,31 @@ class Task extends React.PureComponent {
       bottomValue,
     } = this.props;
 
-    if (topValue && bottomValue && topValue > 0 && bottomValue > 0 ) {
-      onNextStep();
+    if (topValue && bottomValue) {
+      const isValid = parseFloat(topValue) > 0 && parseFloat(bottomValue) > 0;
+
+      if (isValid) {
+        onNextStep();
+      } else {
+        this.setState({
+          errorMessage: 'Your answer is wrong! Try again!',
+          isError: true,
+        });
+
+        this.handleTimer();
+      }
+    } else {
+      this.setState({
+        errorMessage: 'Please, fill in the fields.',
+        isError: true,
+      });
+
+      this.handleTimer();
     }
+  };
+
+  handleTimer = () => {
+    setTimeout(() => this.setState({ isError: false }), 5000);
   };
 
   render() {
@@ -32,6 +59,7 @@ class Task extends React.PureComponent {
       onChangeTop,
       onChangeBottom,
     } = this.props;
+    const { isError, errorMessage } = this.state;
 
     return (
       <div className="task">
@@ -58,6 +86,10 @@ class Task extends React.PureComponent {
             onChange={onChangeBottom}
           />
         </div>
+
+        {isError && (
+          <div className="error">{errorMessage}</div>
+        )}
 
         <div
           className="answer-and-continue flex-both-centered"
