@@ -1,10 +1,10 @@
 import { LeadEngineer } from '../containers/HiringPanel/descriptions/index';
 
 export const jobs = [
-  { id: 1, name: 'Senior Robotics Engineer', location: 'barcelona, spain', country: 'spain', component: LeadEngineer },
-  { id: 2, name: 'Industrial Designer', location: 'barcelona, spain', country: 'spain', component: LeadEngineer },
-  { id: 3, name: 'Lead CV Engineer', location: 'barcelona, spain', country: 'spain', component: LeadEngineer },
-  { id: 4, name: 'Senior Control Engineer', location: 'los angeles, usa', country: 'usa', component: LeadEngineer },
+  { id: 1, name: 'Robotics Engineering', location: 'barcelona, spain', country: 'spain', component: LeadEngineer },
+  { id: 2, name: 'Industrial Design', location: 'barcelona, spain', country: 'spain', component: LeadEngineer },
+  { id: 3, name: 'Computer Vision', location: 'barcelona, spain', country: 'spain', component: LeadEngineer },
+  { id: 4, name: 'Software Engineering', location: 'lbarcelona, spain', country: 'usa', component: LeadEngineer },
 ];
 
 export const countries = [
