@@ -13,10 +13,19 @@ class Header extends React.PureComponent {
     width: PropTypes.number.isRequired,
   };
 
+  scrollTo = (offsetTop) => {
+      window.scroll({ top: offsetTop, left: 0, behavior: 'smooth' });
+  }
+
   handleScroll = () => {
     const { height } = this.props;
+    this.scrollTo(height);
+  };
 
-    window.scroll({ top: height, left: 0, behavior: 'smooth' });
+  handleJoinUsScroll = () => {
+    this.scrollTo(
+        document.querySelector('.hiring-section').offsetTop
+    );
   };
 
   render() {
@@ -48,7 +57,7 @@ class Header extends React.PureComponent {
           discover more
         </div>
 
-        <div className="join-us flex-both-centered">
+        <div className="join-us flex-both-centered" onClick={this.handleJoinUsScroll}>
           join us
         </div>
       </div>
