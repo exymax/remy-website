@@ -29,14 +29,16 @@ class Popup extends React.PureComponent {
         </div>
 
         {isOpen && (
-          <div className="panel">
-            {children}
+          <div className="wrapper flex-both-centered">
+            <div className="panel">
+              {children}
 
-            <div className="close">
-              <img
-                src={close}
-                onClick={onClose}
-              />
+              <div className="close">
+                <img
+                  src={close}
+                  onClick={onClose}
+                />
+              </div>
             </div>
           </div>
         )}
