@@ -27,7 +27,6 @@ class HiringSection extends React.PureComponent {
 		return (
 			<div
 				className="hiring-section"
-				style={{ height }}
 			>
         <div className="join-us">
           <div className="title">join us</div>

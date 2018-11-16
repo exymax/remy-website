@@ -2,30 +2,30 @@
 
 .hiring-section {
   box-sizing: border-box;
-  min-height: 860px;
+  min-height: 699px;
   width: 100%;
-  padding: 120px 180px 135px 180px;
+  padding: 120px 180px 85px 180px;
 
   display: flex;
   justify-content: space-between;
 
   @media (max-width: $screen-lg-min) {
-    min-height: 760px;
-    padding: 100px 150px 116px 150px;
+    min-height: 615px;
+    padding: 100px 150px 56px 150px;
   }
 
   @media (max-width: $screen-md-min) {
-    min-height: 788px;
-    padding: 100px 126px 116px 126px;
+    min-height: 610px;
+    padding: 100px 126px 15px 126px;
   }
 
   @media (max-width: $screen-sm-min) {
-    min-height: 740px;
-    padding: 82px 40px 110px 40px;
+    min-height: 520px;
+    padding: 82px 40px 40px 40px;
   }
 
   @media (max-width: $screen-xs-min) {
-    min-height: 872px;
+    min-height: 772px;
     padding: 50px 20px 36px 20px;
 
     flex-direction: column;
