@@ -110,13 +110,101 @@
       margin-bottom: 24px;
       border-radius: 4px;
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
+      // animation: gradient-top 3s infinite;
 
       .ball {
         height: 8px;
         width: 8px;
         border-radius: 4px;
         background-color: $white;
+        animation: slide-top 3s infinite;
       }
+
+      @-webkit-keyframes slide-top {
+        0% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+
+        50% {
+          -webkit-transform: translateY(28px);
+          transform: translateY(28px);
+        }
+
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slide-top {
+        0% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+
+        50% {
+          -webkit-transform: translateY(28px);
+          transform: translateY(28px);
+        }
+
+        100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+        }
+      }
+
+      //@-webkit-keyframes gradient-top {
+      //  0% {
+      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
+      //  }
+      //
+      //  10% {
+      //    background: linear-gradient(to bottom, $app-theme-color 0%, rgba(255, 255, 255, 0.4) 25%, $app-theme-color 60%);
+      //  }
+      //
+      //  25% {
+      //    background: linear-gradient(to bottom, $app-theme-color, rgba(255, 255, 255, 0.4), $app-theme-color);
+      //  }
+      //
+      //  50% {
+      //    background: linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
+      //  }
+      //
+      //  75% {
+      //    background: linear-gradient(to bottom, $app-theme-color,  rgba(255, 255, 255, 0.4), $app-theme-color);
+      //  }
+      //
+      //  100% {
+      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
+      //  }
+      //}
+      //
+      //@keyframes gradient-top {
+      //  0% {
+      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
+      //  }
+      //
+      //  10% {
+      //    background: linear-gradient(to bottom, $app-theme-color 0%, rgba(255, 255, 255, 0.4) 25%, $app-theme-color 60%);
+      //  }
+      //
+      //  25% {
+      //    background: linear-gradient(to bottom, $app-theme-color, rgba(255, 255, 255, 0.4), $app-theme-color);
+      //  }
+      //
+      //  50% {
+      //    background: linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
+      //  }
+      //
+      //  75% {
+      //    background: linear-gradient(to bottom, $app-theme-color,  rgba(255, 255, 255, 0.4), $app-theme-color);
+      //  }
+      //
+      //  100% {
+      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
+      //  }
+      //}
     }
   }
 
