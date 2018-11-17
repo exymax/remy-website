@@ -153,58 +153,6 @@
           transform: translateY(0);
         }
       }
-
-      //@-webkit-keyframes gradient-top {
-      //  0% {
-      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
-      //  }
-      //
-      //  10% {
-      //    background: linear-gradient(to bottom, $app-theme-color 0%, rgba(255, 255, 255, 0.4) 25%, $app-theme-color 60%);
-      //  }
-      //
-      //  25% {
-      //    background: linear-gradient(to bottom, $app-theme-color, rgba(255, 255, 255, 0.4), $app-theme-color);
-      //  }
-      //
-      //  50% {
-      //    background: linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
-      //  }
-      //
-      //  75% {
-      //    background: linear-gradient(to bottom, $app-theme-color,  rgba(255, 255, 255, 0.4), $app-theme-color);
-      //  }
-      //
-      //  100% {
-      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
-      //  }
-      //}
-      //
-      //@keyframes gradient-top {
-      //  0% {
-      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
-      //  }
-      //
-      //  10% {
-      //    background: linear-gradient(to bottom, $app-theme-color 0%, rgba(255, 255, 255, 0.4) 25%, $app-theme-color 60%);
-      //  }
-      //
-      //  25% {
-      //    background: linear-gradient(to bottom, $app-theme-color, rgba(255, 255, 255, 0.4), $app-theme-color);
-      //  }
-      //
-      //  50% {
-      //    background: linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
-      //  }
-      //
-      //  75% {
-      //    background: linear-gradient(to bottom, $app-theme-color,  rgba(255, 255, 255, 0.4), $app-theme-color);
-      //  }
-      //
-      //  100% {
-      //    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, $app-theme-color 80%);
-      //  }
-      //}
     }
   }
 
@@ -295,6 +243,7 @@
     background-clip: border-box;
     -webkit-background-size: 75px 75px;
     background-size: 75px 75px;
+    animation: grid-animation 80s infinite;
 
     @media (max-width: $screen-lg-min) {
       min-height: 660px;
@@ -302,6 +251,20 @@
 
     @media (max-width: $screen-xs-min) {
       min-height: 580px;
+    }
+
+    @-webkit-keyframes grid-animation {
+      0% {
+        background-position: -1px -1px;
+      }
+
+      50% {
+        background-position: 450px 450px;
+      }
+
+      100% {
+        background-position: -1px -1px;
+      }
     }
   }
 }
