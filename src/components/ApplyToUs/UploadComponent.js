@@ -38,7 +38,7 @@ class UploadComponent extends React.PureComponent {
     } else {
       return (
         <label htmlFor="file">
-          <div>
+          <div className="flex-both-centered">
             <img src={clip} className="clip" />
             <span className="attach">Attach your CV</span>
             Max file size – 3Mb
