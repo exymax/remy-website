@@ -1,3 +1,4 @@
+@import "~styles/transitions.scss";
 @import "~styles/variables.scss";
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
@@ -213,6 +214,8 @@
         display: flex;
 
         > .square {
+          @include app-transition;
+
           &:hover,
           &.active {
             background-color: $element-hover-color;

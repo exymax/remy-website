@@ -1,3 +1,4 @@
+@import "~styles/transitions.scss";
 @import "~styles/variables.scss";
 
 .dropdown {
@@ -19,6 +20,7 @@
       height: 35px;
       width: 100%;
       cursor: pointer;
+      @include app-transition;
 
       display: flex;
       justify-content: space-between;
