@@ -7,48 +7,35 @@ class Submission extends React.PureComponent {
     onApply: PropTypes.func.isRequired,
   };
 
+  getConfirmContent = () => {
+      const { type } = this.props;
+      const messages = {
+          success: 'Successfully sent',
+          error: 'Form submission failed. Please try again'
+      };
+
+      return messages.hasOwnProperty(type) ? messages[type] : null;
+  };
+
   render() {
-    const { type, onApply } = this.props;
+    const { onApply } = this.props;
 
-    if (type === 'success') {
-      return (
-        <div className="submission">
-          <div className="submission-title">Success CV Submission</div>
+    return (
+    <div className="submission">
+      <div className="submission-title">CV Submission</div>
 
-          <div className="submission-content flex-both-centered">
-            Successfully sent
-          </div>
+      <div className="submission-content">
+          {this.getConfirmContent()}
+      </div>
 
-          <div
-            onClick={onApply}
-            className='submission-button flex-both-centered'
-          >
-            ok
-          </div>
-        </div>
-      );
-    }
-
-    if (type === 'error') {
-      return (
-        <div className="submission">
-          <div className="submission-title">Fail CV Submission</div>
-
-          <div className="submission-content flex-both-centered">
-            Send failed. Please try again
-          </div>
-
-          <div
-            onClick={onApply}
-            className='submission-button flex-both-centered'
-          >
-            ok
-          </div>
-        </div>
-      );
-    }
-
-    return null;
+      <div
+        onClick={onApply}
+        className='submission-button flex-both-centered'
+      >
+        ok
+      </div>
+    </div>
+    );
   }
 }
 
