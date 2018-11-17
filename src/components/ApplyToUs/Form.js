@@ -6,35 +6,71 @@ import UploadComponent from './UploadComponent';
 
 class Form extends React.PureComponent {
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    file: PropTypes.string.isRequired,
-    fileName: PropTypes.string.isRequired,
-    onChangeName: PropTypes.func.isRequired,
-    onChangeEmail: PropTypes.func.isRequired,
-    onChangeNumber: PropTypes.func.isRequired,
-    onChangeDescription: PropTypes.func.isRequired,
-    onChangeFile: PropTypes.func.isRequired,
-    onCancelFile: PropTypes.func.isRequired,
     onSendResponse: PropTypes.func.isRequired,
   };
 
   state = {
+    name: '',
+    email: '',
+    number: '',
+    description: '',
+    file: '',
+    fileName: '',
     nameError: false,
     emailError: false,
     numberError: false,
   };
 
-  handleSendResponse = (e) => {
-    e.preventDefault();
+  handleChangeName = ({ target: { value }}) => {
+    this.setState({
+      name: value,
+    });
+  };
 
+  handleChangeEmail = ({ target: { value }}) => {
+    this.setState({
+      email: value,
+    });
+  };
+
+  handleChangeNumber = ({ target: { value }}) => {
+    this.setState({
+      number: value,
+    });
+  };
+
+  handleChangeDescription = ({ target: { value }}) => {
+    this.setState({
+      description: value,
+    });
+  };
+
+  handleChangeFile = ({ target }) => {
+    const { size, value, files } = target;
+    const name = files[0].name;
+
+    if (size < 3001) {
+      this.setState({
+        file: value,
+        fileName: name,
+      });
+    }
+  };
+
+  handleCancelFile = () => {
+    this.setState({
+      file: '',
+      fileName: '',
+    });
+  };
+
+  handleSendResponse = () => {
     const {
       name,
       email,
       number,
-    } = this.props;
+    } = this.state;
+    const { onSendResponse } = this.props;
     const isNameValid = name && name.length > 0;
     const isEmailValid = email && email.length > 0 && emailValidator.validate(email);
     const isNumberValid = number && number.length > 0;
@@ -73,14 +109,30 @@ class Form extends React.PureComponent {
         method: 'POST',
         body: formData
     }).then(() => {
-        console.log('sent successfully');
+      onSendResponse('success');
+      this.handleInitState();
     }).catch(() => {
-        console.log('send error');
+      onSendResponse('error');
+      this.handleInitState();
+    });
+  };
+
+  handleInitState = () => {
+    this.setState({
+      name: '',
+      email: '',
+      number: '',
+      description: '',
+      file: '',
+      fileName: '',
+      nameError: false,
+      emailError: false,
+      numberError: false,
     });
   };
 
   buildForm = () => {
-      const { name, email, number, description } = this.props;
+      const { name, email, number, description } = this.state;
       const { files } = document.querySelector('.file-upload .inputfile');
       const formData = new FormData();
 
@@ -97,31 +149,19 @@ class Form extends React.PureComponent {
 
   render() {
     const {
-      nameError,
-      emailError,
-      numberError,
-    } = this.state;
-    const {
       name,
       email,
       number,
       description,
       file,
       fileName,
-      onChangeName,
-      onChangeEmail,
-      onChangeNumber,
-      onChangeDescription,
-      onChangeFile,
-      onCancelFile,
-    } = this.props;
+      nameError,
+      emailError,
+      numberError,
+    } = this.state;
 
     return (
-        <form acceptCharset="UTF-8"
-              action="https://usebasin.com/f/b3b27e6b544a"
-              encType="multipart/form-data"
-              method="POST"
-              onSubmit={this.handleSendResponse}>
+        <form acceptCharset="UTF-8">
             <div className="form">
                 <div className="form-title">Tell us about yourself</div>
 
@@ -132,7 +172,7 @@ class Form extends React.PureComponent {
                         className={this.applyInvalidClass(nameError)}
                         placeholder="Your Surname and Name"
                         value={name}
-                        onChange={onChangeName}
+                        onChange={this.handleChangeName}
                     />
                 </div>
 
@@ -144,7 +184,7 @@ class Form extends React.PureComponent {
                         className={this.applyInvalidClass(emailError)}
                         placeholder="Your E-mail"
                         value={email}
-                        onChange={onChangeEmail}
+                        onChange={this.handleChangeEmail}
                     />
                 </div>
 
@@ -155,7 +195,7 @@ class Form extends React.PureComponent {
                         className={this.applyInvalidClass(numberError)}
                         placeholder="Your phone number"
                         value={number}
-                        onChange={onChangeNumber}
+                        onChange={this.handleChangeNumber}
                     />
                 </div>
 
@@ -163,17 +203,22 @@ class Form extends React.PureComponent {
                     placeholder="Accompanying letter"
                     name='letter'
                     value={description}
-                    onChange={onChangeDescription}
+                    onChange={this.handleChangeDescription}
                 />
 
                 <UploadComponent
                     file={file}
                     fileName={fileName}
-                    onChangeFile={onChangeFile}
-                    onCancelFile={onCancelFile}
+                    onChangeFile={this.handleChangeFile}
+                    onCancelFile={this.handleCancelFile}
                 />
 
-                <input type='submit' className='send-response flex-both-centered' value='send response' />
+                <div
+                  onClick={this.handleSendResponse}
+                  className='send-response flex-both-centered'
+                >
+                  send response
+                </div>
             </div>
         </form>
     );
