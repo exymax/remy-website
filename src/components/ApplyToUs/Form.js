@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import * as emailValidator from 'email-validator';
 
 import UploadComponent from './UploadComponent';
+import Spinner from "~components/Spinner";
 
-class Form extends React.PureComponent {
-  static propTypes = {
-    onSendResponse: PropTypes.func.isRequired,
-  };
-
-  state = {
+const initialFormState = {
     name: '',
     email: '',
     number: '',
@@ -19,7 +15,15 @@ class Form extends React.PureComponent {
     nameError: false,
     emailError: false,
     numberError: false,
+    isRequestFetching: false
+};
+
+class Form extends React.PureComponent {
+  static propTypes = {
+    onSendResponse: PropTypes.func.isRequired,
   };
+
+  state = {...initialFormState};
 
   handleChangeName = ({ target: { value }}) => {
     this.setState({
@@ -105,6 +109,11 @@ class Form extends React.PureComponent {
 
     const formData = this.buildForm();
 
+    this.setState({
+        ...this.state,
+        isRequestFetching: true
+    });
+
     fetch('https://usebasin.com/f/b3b27e6b544a', {
         method: 'POST',
         body: formData
@@ -118,17 +127,7 @@ class Form extends React.PureComponent {
   };
 
   handleInitState = () => {
-    this.setState({
-      name: '',
-      email: '',
-      number: '',
-      description: '',
-      file: '',
-      fileName: '',
-      nameError: false,
-      emailError: false,
-      numberError: false,
-    });
+    this.setState({...initialFormState});
   };
 
   buildForm = () => {
@@ -158,10 +157,13 @@ class Form extends React.PureComponent {
       nameError,
       emailError,
       numberError,
+      isRequestFetching
     } = this.state;
 
     return (
         <form acceptCharset="UTF-8">
+            <Spinner isVisible={isRequestFetching} />
+
             <div className="form">
                 <div className="form-title">Tell us about yourself</div>
 

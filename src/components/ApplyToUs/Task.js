@@ -52,6 +52,12 @@ class Task extends React.PureComponent {
     setTimeout(() => this.setState({ isError: false }), 5000);
   };
 
+  handleEnterAnswer = (e) => {
+    if (e.charCode === 13) {
+      this.handleNextStep();
+    }
+  };
+
   render() {
     const {
       topValue,
@@ -75,6 +81,7 @@ class Task extends React.PureComponent {
             className="input input-top"
             value={topValue}
             onChange={onChangeTop}
+            onKeyPress={this.handleEnterAnswer}
           />
 
           <img src={answer} />
@@ -84,6 +91,7 @@ class Task extends React.PureComponent {
             className="input input-bottom"
             value={bottomValue}
             onChange={onChangeBottom}
+            onKeyPress={this.handleEnterAnswer}
           />
         </div>
 

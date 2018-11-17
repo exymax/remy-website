@@ -18,8 +18,9 @@ class Header extends React.PureComponent {
   };
 
   handleScroll = () => {
-    const { height } = this.props;
-    this.scrollTo(height);
+    this.scrollTo(
+        document.querySelector('.about-us').offsetTop
+    );
   };
 
   handleJoinUsScroll = () => {
