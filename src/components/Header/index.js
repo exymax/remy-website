@@ -15,7 +15,7 @@ class Header extends React.PureComponent {
 
   scrollTo = (offsetTop) => {
       window.scroll({ top: offsetTop, left: 0, behavior: 'smooth' });
-  }
+  };
 
   handleScroll = () => {
     const { height } = this.props;
@@ -34,11 +34,11 @@ class Header extends React.PureComponent {
     return (
       <div
         className="header"
-        style={{ height }}
+        style={{ height, width: width }}
       >
         <div
           className="gradient-pattern"
-          style={{ height, width: width - 15 }}
+          style={{ height, width: width }}
         />
         <img
           src={logo}
