@@ -12,7 +12,6 @@ class Toolbar extends React.PureComponent {
   static propTypes = {
     activeJob: PropTypes.number,
     country: PropTypes.object,
-    isScrollOnStart: PropTypes.bool.isRequired,
     onCloseHiringPanel: PropTypes.func.isRequired,
     onSelectCountry: PropTypes.func.isRequired,
     onCloseCurrentJob: PropTypes.func.isRequired,
@@ -25,13 +24,11 @@ class Toolbar extends React.PureComponent {
       onCloseHiringPanel,
       onSelectCountry,
       onCloseCurrentJob,
-      isScrollOnStart,
     } = this.props;
     const { label } = country;
     const className = classNames(
       "toolbar",
       { "active-job": activeJob },
-      { "is-scrolled": !isScrollOnStart }
       );
 
     return (
@@ -59,10 +56,6 @@ class Toolbar extends React.PureComponent {
           onClick={onCloseCurrentJob}
         >
           <img src={back} />
-        </div>
-
-        <div className="filters">
-          Filter: <span className="label">{label}</span>
         </div>
       </div>
 

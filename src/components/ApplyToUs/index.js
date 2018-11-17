@@ -3,6 +3,7 @@ import React from 'react';
 import Popup from '~components/Popup';
 import Task from './Task';
 import Form from './Form';
+import Submission from './Submission';
 import './styles.scss';
 
 class ApplyToUs extends React.PureComponent {
@@ -10,13 +11,8 @@ class ApplyToUs extends React.PureComponent {
     step: 1,
     topValue: '',
     bottomValue: '',
-    name: '',
-    email: '',
-    number: '',
-    description: '',
-    file: '',
-    fileName: '',
     isOpen: false,
+    typeSubmission: '',
   };
 
   handleChangeTop = ({ target: { value }}) => {
@@ -31,60 +27,12 @@ class ApplyToUs extends React.PureComponent {
     });
   };
 
-  handleChangeName = ({ target: { value }}) => {
-    this.setState({
-      name: value,
-    });
-  };
-
-  handleChangeEmail = ({ target: { value }}) => {
-    this.setState({
-      email: value,
-    });
-  };
-
-  handleChangeNumber = ({ target: { value }}) => {
-    this.setState({
-      number: value,
-    });
-  };
-
-  handleChangeDescription = ({ target: { value }}) => {
-    this.setState({
-      description: value,
-    });
-  };
-
-  handleChangeFile = ({ target }) => {
-    const { size, value, files } = target;
-    const name = files[0].name;
-
-    if (size < 3001) {
-      this.setState({
-        file: value,
-        fileName: name,
-      });
-    }
-  };
-
-  handleCancelFile = () => {
-    this.setState({
-      file: '',
-      fileName: '',
-    });
-  };
-
   switchStep = () => {
     const {
       step,
       topValue,
       bottomValue,
-      name,
-      email,
-      number,
-      description,
-      file,
-      fileName,
+      typeSubmission,
     } = this.state;
 
     switch (step) {
@@ -101,20 +49,14 @@ class ApplyToUs extends React.PureComponent {
 
       case 2:
         return (
-          <Form
-            name={name}
-            email={email}
-            number={number}
-            description={description}
-            file={file}
-            fileName={fileName}
-            onChangeName={this.handleChangeName}
-            onChangeEmail={this.handleChangeEmail}
-            onChangeNumber={this.handleChangeNumber}
-            onChangeDescription={this.handleChangeDescription}
-            onChangeFile={this.handleChangeFile}
-            onCancelFile={this.handleCancelFile}
-            onSendResponse={this.handleSendResponse}
+          <Form onSendResponse={this.handleSendResponse} />
+        );
+
+      case 3:
+        return (
+          <Submission
+            type={typeSubmission}
+            onApply={this.handleApply}
           />
         );
 
@@ -129,8 +71,11 @@ class ApplyToUs extends React.PureComponent {
     });
   };
 
-  handleSendResponse = () => {
-    this.handleClosePopup();
+  handleSendResponse = (type) => {
+    this.setState({
+      step: 3,
+      typeSubmission: type,
+    });
   };
 
   handleOpenPopup = () => {
@@ -139,18 +84,17 @@ class ApplyToUs extends React.PureComponent {
     });
   };
 
+  handleApply = () => {
+    this.handleClosePopup();
+  };
+
   handleClosePopup = () => {
     this.setState({
       isOpen: false,
       step: 1,
       topValue: '',
       bottomValue: '',
-      name: '',
-      email: '',
-      number: '',
-      description: '',
-      file: '',
-      fileName: '',
+      typeSubmission: '',
     });
   };
 

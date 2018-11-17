@@ -1,8 +1,9 @@
+@import "~styles/transitions.scss";
 @import "~styles/variables.scss";
 
 .header {
   box-sizing: border-box;
-  height: 780px;
+  min-width: 780px;
   width: 100%;
   background-color: $app-theme-color;
   font-family: GrotesqueBold;
@@ -16,7 +17,7 @@
   align-items: center;
 
   @media (max-width: $screen-lg-min) {
-    height: 660px;
+    min-width: 660px;
     padding: 68px 60px 38px 60px;
     width: 100%;
   }
@@ -32,6 +33,7 @@
   @media (max-width: $screen-xs-min) {
     height: 580px;
     padding: 36px 20px 32px 20px;
+    min-width: 580px;
   }
 
   .title {
@@ -81,6 +83,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include app-transition;
 
     @media (max-width: $screen-lg-min) {
       font-size: 14px;
@@ -235,6 +238,7 @@
     width: 200px;
     border: 2px solid $white;
     text-transform: uppercase;
+    @include app-transition;
 
     position: absolute;
     top: 55px;

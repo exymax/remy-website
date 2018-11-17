@@ -1,3 +1,4 @@
+@import "~styles/transitions.scss";
 @import "~styles/variables.scss";
 
 .hiring-section {
@@ -164,6 +165,7 @@
           line-height: 32px;
           font-size: 28px;
           margin-bottom: 8px;
+          @include app-transition;
 
           @media (max-width: $screen-lg-min) {
             font-size: 22px;

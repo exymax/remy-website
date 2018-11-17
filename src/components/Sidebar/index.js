@@ -9,11 +9,8 @@ import './styles.scss';
 class Sidebar extends React.PureComponent {
   static propTypes = {
     activeJob: PropTypes.number,
-    isScrollOnStart: PropTypes.bool.isRequired,
     jobs: PropTypes.array.isRequired,
     onChooseOtherJob: PropTypes.func.isRequired,
-    onYReachStart: PropTypes.func.isRequired,
-    onScrollDown: PropTypes.func.isRequired,
   };
 
   state = {
@@ -40,27 +37,21 @@ class Sidebar extends React.PureComponent {
       activeJob,
       jobs,
       onChooseOtherJob,
-      onYReachStart,
-      onScrollDown,
-      isScrollOnStart,
     } = this.props;
     const { height } = this.state;
     const className = classNames(
       "sidebar",
       { "active-job": activeJob },
-      {"is-scrolled": !isScrollOnStart}
     );
+    const heightWithoutToolbar = height - 52 - 82;
 
     return (
       <div className={className}>
         <div
           className="container"
-          style={{ height: `${height}px` }}
+          style={{ height: `${heightWithoutToolbar}px` }}
         >
-          <Scrollbar
-            onYReachStart={onYReachStart}
-            onScrollDown={onScrollDown}
-          >
+          <Scrollbar>
             {jobs.map((job) => {
               const { id } = job;
               const isActive = activeJob === id;

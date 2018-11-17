@@ -17,24 +17,11 @@ class HiringPanel extends React.PureComponent {
 
   state = {
     country: countries[0],
-    isScrollOnStart: true,
   };
 
   handleSelectCountry = (country) => {
     this.setState({
       country,
-    });
-  };
-
-  handleYReachStart = () => {
-    this.setState({
-      isScrollOnStart: true,
-    });
-  };
-
-  handleScrollDown = () => {
-    this.setState({
-      isScrollOnStart: false,
     });
   };
 
@@ -45,17 +32,13 @@ class HiringPanel extends React.PureComponent {
       onChooseOtherJob,
       onCloseCurrentJob,
     } = this.props;
-    const {
-      country,
-      isScrollOnStart,
-    } = this.state;
+    const { country } = this.state;
 
     const filteredJobs = country.name === 'all' ? jobs : jobs.filter((job) => job.country === country.name);
 
     return (
       <div className="hiring-panel">
         <Toolbar
-          isScrollOnStart={isScrollOnStart}
           activeJob={activeJob}
           country={country}
           onCloseHiringPanel={onCloseHiringPanel}
@@ -64,12 +47,9 @@ class HiringPanel extends React.PureComponent {
         />
 
         <Sidebar
-          isScrollOnStart={isScrollOnStart}
           activeJob={activeJob}
           jobs={filteredJobs}
           onChooseOtherJob={onChooseOtherJob}
-          onYReachStart={this.handleYReachStart}
-          onScrollDown={this.handleScrollDown}
         />
 
         <BodyContent

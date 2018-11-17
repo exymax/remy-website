@@ -1,3 +1,4 @@
+@import "~styles/transitions.scss";
 @import "~styles/variables.scss";
 
 .sidebar {
@@ -22,6 +23,7 @@
       height: 68px;
       width: calc(100% - 50px);
       padding: 12px 0 0 50px;
+      @include app-transition;
 
       .name {
         font-family: GrotesqueBold;
@@ -46,7 +48,7 @@
 
 @media (max-width: $screen-xs-min) {
   .sidebar {
-    &:not(.active-job):not(.is-scrolled) {
+    &:not(.active-job) {
       top: 118px;
       height: 100%;
       width: 100%;
@@ -84,10 +86,6 @@
 
     &.active-job {
       display: none;
-    }
-
-    &.is-scrolled {
-      top: 67px;
     }
   }
 }
