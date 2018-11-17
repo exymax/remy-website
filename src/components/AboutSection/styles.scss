@@ -2,11 +2,13 @@
 
 .about-us {
   box-sizing: border-box;
+  min-width: 780px;
   width: 100%;
   padding: 204px 0 204px 180px;
   letter-spacing: 0;
 
   @media (max-width: $screen-lg-min) {
+    min-width: 660px;
     padding: 174px 0 180px 150px;
   }
 
@@ -20,6 +22,7 @@
 
   @media (max-width: $screen-xs-min) {
     padding: 50px 20px 28px 20px;
+    min-width: 560px;
   }
 
   .title {

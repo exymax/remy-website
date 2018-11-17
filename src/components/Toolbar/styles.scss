@@ -53,7 +53,7 @@
 
 @media (max-width: $screen-xs-min) {
   .toolbar {
-    &:not(.is-scrolled):not(.active-job) {
+    &:not(.active-job) {
       height: 118px;
       width: 100%;
       flex-wrap: wrap;
@@ -131,31 +131,6 @@
 
         margin: 24px 0 0 20px;
         cursor: pointer;
-      }
-    }
-
-    &.is-scrolled {
-      height: 67px;
-      background-color: #F5F7FA;
-
-      .title,
-      .right-section,
-      .filters {
-        display: none;
-      }
-
-      .filters {
-        display: block;
-        height: calc(52px - 16px );
-        width: calc(100% - 20px);
-        font-size: 16px;
-        line-height: 16px;
-        padding: 16px 0 0 20px;
-        font-family: Grotesque;
-
-        .label {
-          font-family: GrotesqueBold;
-        }
       }
     }
   }

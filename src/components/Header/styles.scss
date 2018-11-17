@@ -3,7 +3,7 @@
 
 .header {
   box-sizing: border-box;
-  height: 780px;
+  min-width: 780px;
   width: 100%;
   background-color: $app-theme-color;
   font-family: GrotesqueBold;
@@ -17,7 +17,7 @@
   align-items: center;
 
   @media (max-width: $screen-lg-min) {
-    height: 660px;
+    min-width: 660px;
     padding: 68px 60px 38px 60px;
     width: 100%;
   }
@@ -33,6 +33,7 @@
   @media (max-width: $screen-xs-min) {
     height: 580px;
     padding: 36px 20px 32px 20px;
+    min-width: 580px;
   }
 
   .title {
