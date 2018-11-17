@@ -169,7 +169,13 @@
     input {
       height: 44px;
       width: 360px;
+      box-sizing: border-box;
       text-indent: 16px;
+      border: 1px solid rgb(169, 169, 169);
+
+      &.field-invalid {
+        border: 1px solid #cf2925;
+      }
 
       @media (max-width: $screen-xs-min) {
         width: 280px;
@@ -190,9 +196,11 @@
 
   textarea {
     font-family: Grotesque;
+    box-sizing: border-box;
     height: 224px;
     width: 360px;
     resize: none;
+    padding-top: 15px;
     text-indent: 16px;
 
     @media (max-width: $screen-xs-min) {

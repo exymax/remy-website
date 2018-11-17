@@ -26,18 +26,17 @@ class Form extends React.PureComponent {
     numberError: false,
   };
 
-  handleSendResponse = () => {
+  handleSendResponse = (e) => {
     const {
       name,
       email,
       number,
-      onSendResponse,
     } = this.props;
-    const isValidName = name && name.length > 0;
-    const isValidEmail = email && email.length > 0;
-    const isValidNumber = number && number.length > 0;
+    const isNameValid = name && name.length > 0;
+    const isEmailValid = email && email.length > 0;
+    const isNumberValid = number && number.length > 0;
 
-    if (!isValidName) {
+    if (!isNameValid) {
       this.setState(() => ({
         nameError: true,
       }));
@@ -45,7 +44,7 @@ class Form extends React.PureComponent {
      setTimeout(() => this.setState(() => ({ nameError: false, })), 5000);
     }
 
-    if (!isValidEmail) {
+    if (!isEmailValid) {
       this.setState(() => ({
         emailError: true,
       }));
@@ -53,7 +52,7 @@ class Form extends React.PureComponent {
      setTimeout(() => this.setState(() => ({ emailError: false, })), 5000);
     }
 
-    if (!isValidNumber) {
+    if (!isNumberValid) {
       this.setState(() => ({
         numberError: true,
       }));
@@ -61,8 +60,12 @@ class Form extends React.PureComponent {
       setTimeout(() => this.setState(() => ({ numberError: false, })), 5000);
     }
 
-    isValidName && isValidEmail && isValidNumber && onSendResponse();
+    if ([isNameValid, isEmailValid, isNumberValid].some(validity => !validity)) {
+      e.preventDefault();
+    }
   };
+
+  applyInvalidClass = (invalidity) => invalidity ? 'field-invalid' : '';
 
   render() {
     const {
@@ -86,59 +89,61 @@ class Form extends React.PureComponent {
     } = this.props;
 
     return (
-      <div className="form">
-        <div className="form-title">Tell us about yourself</div>
+        <form action="https://getform.org/u/8dc1963d-9ef3-4d11-97f3-cc29ffd97a8e" encType="multipart/form-data"
+              method="POST" onSubmit={this.handleSendResponse}>
+            <div className="form">
+                <div className="form-title">Tell us about yourself</div>
 
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Your Surname and Name"
-            value={name}
-            onChange={onChangeName}
-          />
-          {nameError && <div className="error">Fill your name and surname</div>}
-        </div>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        name='name-surname'
+                        className={this.applyInvalidClass(nameError)}
+                        placeholder="Your Surname and Name"
+                        value={name}
+                        onChange={onChangeName}
+                    />
+                </div>
 
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Your E-mail"
-            value={email}
-            onChange={onChangeEmail}
-          />
-          {emailError && <div className="error">Fill your e-mail. We could send usefull information to you.</div>}
-        </div>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        name='email'
+                        className={this.applyInvalidClass(emailError)}
+                        placeholder="Your E-mail"
+                        value={email}
+                        onChange={onChangeEmail}
+                    />
+                </div>
 
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Your phone number"
-            value={number}
-            onChange={onChangeNumber}
-          />
-          {numberError && <div className="error">Fill the phone number. It’s necessary to contact with you</div>}
-        </div>
+                <div className="form-group">
+                    <input
+                        type="text"
+                        name='phone'
+                        className={this.applyInvalidClass(numberError)}
+                        placeholder="Your phone number"
+                        value={number}
+                        onChange={onChangeNumber}
+                    />
+                </div>
 
-        <textarea
-          placeholder="Accompanying letter"
-          value={description}
-          onChange={onChangeDescription}
-        />
+                <textarea
+                    placeholder="Accompanying letter"
+                    name='letter'
+                    value={description}
+                    onChange={onChangeDescription}
+                />
 
-        <UploadComponent
-          file={file}
-          fileName={fileName}
-          onChangeFile={onChangeFile}
-          onCancelFile={onCancelFile}
-        />
+                <UploadComponent
+                    file={file}
+                    fileName={fileName}
+                    onChangeFile={onChangeFile}
+                    onCancelFile={onCancelFile}
+                />
 
-        <div
-          className="send-response flex-both-centered"
-          onClick={this.handleSendResponse}
-        >
-          send response
-        </div>
-      </div>
+                <input type='submit' className='send-response flex-both-centered' value='send response' />
+            </div>
+        </form>
     );
   }
 }
