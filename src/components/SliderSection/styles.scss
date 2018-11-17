@@ -105,6 +105,11 @@
         font-family: GrotesqueBold;
         cursor: pointer;
 
+        a {
+          color: $white;
+          text-decoration: none;
+        }
+
         &:hover {
           color: $text-hover-color;
         }
