@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as emailValidator from 'email-validator';
 
 import UploadComponent from './UploadComponent';
 
@@ -27,13 +28,15 @@ class Form extends React.PureComponent {
   };
 
   handleSendResponse = (e) => {
+    e.preventDefault();
+
     const {
       name,
       email,
       number,
     } = this.props;
     const isNameValid = name && name.length > 0;
-    const isEmailValid = email && email.length > 0;
+    const isEmailValid = email && email.length > 0 && emailValidator.validate(email);
     const isNumberValid = number && number.length > 0;
 
     if (!isNameValid) {
@@ -61,8 +64,33 @@ class Form extends React.PureComponent {
     }
 
     if ([isNameValid, isEmailValid, isNumberValid].some(validity => !validity)) {
-      e.preventDefault();
+      return;
     }
+
+    const formData = this.buildForm();
+
+    fetch('https://usebasin.com/f/b3b27e6b544a', {
+        method: 'POST',
+        body: formData
+    }).then(() => {
+        console.log('sent successfully');
+    }).catch(() => {
+        console.log('send error');
+    });
+  };
+
+  buildForm = () => {
+      const { name, email, number, description } = this.props;
+      const { files } = document.querySelector('.file-upload .inputfile');
+      const formData = new FormData();
+
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phone', number);
+      formData.append('message', description);
+      formData.append('file', files[0]);
+
+      return formData;
   };
 
   applyInvalidClass = (invalidity) => invalidity ? 'field-invalid' : '';
@@ -89,8 +117,11 @@ class Form extends React.PureComponent {
     } = this.props;
 
     return (
-        <form action="https://getform.org/u/8dc1963d-9ef3-4d11-97f3-cc29ffd97a8e" encType="multipart/form-data"
-              method="POST" onSubmit={this.handleSendResponse}>
+        <form acceptCharset="UTF-8"
+              action="https://usebasin.com/f/b3b27e6b544a"
+              encType="multipart/form-data"
+              method="POST"
+              onSubmit={this.handleSendResponse}>
             <div className="form">
                 <div className="form-title">Tell us about yourself</div>
 
@@ -107,7 +138,8 @@ class Form extends React.PureComponent {
 
                 <div className="form-group">
                     <input
-                        type="text"
+                        id='email'
+                        type='text'
                         name='email'
                         className={this.applyInvalidClass(emailError)}
                         placeholder="Your E-mail"
