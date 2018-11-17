@@ -169,7 +169,13 @@
     input {
       height: 44px;
       width: 360px;
+      box-sizing: border-box;
       text-indent: 16px;
+      border: 1px solid rgb(169, 169, 169);
+
+      &.field-invalid {
+        border: 1px solid #cf2925;
+      }
 
       @media (max-width: $screen-xs-min) {
         width: 280px;
@@ -190,9 +196,11 @@
 
   textarea {
     font-family: Grotesque;
+    box-sizing: border-box;
     height: 224px;
     width: 360px;
     resize: none;
+    padding-top: 15px;
     text-indent: 16px;
 
     @media (max-width: $screen-xs-min) {
@@ -282,3 +290,56 @@
     }
   }
 }
+
+.submission {
+  box-sizing: border-box;
+  height: 300px;
+  width: 100%;
+  padding: 42px 152px 68px 76px;
+  font-family: Grotesque;
+  line-height: 20px;
+  font-size: 16px;
+
+  @media (max-width: $screen-xs-min) {
+    padding: 24px 20px 50px 20px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .submission-title {
+    line-height: 42px;
+    font-size: 36px;
+    font-family: GrotesqueBold;
+    margin-bottom: 32px;
+
+    @media (max-width: $screen-xs-min) {
+      line-height: 21px;
+      font-size: 28px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .submission-content {
+    height: 100px;
+    width: 360px;
+
+    @media (max-width: $screen-xs-min) {
+      width: 280px;
+    }
+  }
+
+  .submission-button {
+    cursor: pointer;
+    color: $white;
+    height: 56px;
+    width: 360px;
+    border: 1px solid #000000;
+    background-color: #000000;
+    text-transform: uppercase;
+
+    @media (max-width: $screen-xs-min) {
+      width: 280px;
+    }
+  }
+}
+
