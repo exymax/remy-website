@@ -29,6 +29,11 @@
         @media (max-width: $screen-xs-min) {
           top: 24px;
           right: 20px;
+
+          img {
+            height: 20px;
+            width: 20px;
+          }
         }
       }
 
