@@ -108,17 +108,15 @@ class Form extends React.PureComponent {
         nameError: true,
       }));
 
-     setTimeout(() => this.setState(() => ({ nameError: false, })), 5000);
+     setTimeout(() => this.setState(() => ({ nameError: false })), 5000);
     }
 
     if (!isFileValid) {
         this.setState({
-            ...this.state,
             fileError: true
         });
 
         setTimeout(() => this.setState({
-            ...this.state,
             fileError: false
         }), 5000);
     }
@@ -215,8 +213,6 @@ class Form extends React.PureComponent {
       fileError,
       isRequestFetching
     } = this.state;
-
-    console.log(!!name);
 
     return (
         <form acceptCharset="UTF-8">
