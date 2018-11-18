@@ -64,6 +64,7 @@ class UploadComponent extends React.PureComponent {
           className="inputfile"
           value={file}
           onChange={onChangeFile}
+          accept=".pdf, .doc, .docx, .xlsx"
         />
 
         {label}
