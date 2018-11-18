@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as emailValidator from 'email-validator';
+import AWS from 'aws-sdk';
+import uuidv4 from 'uuid/v4';
 
 import UploadComponent from './UploadComponent';
 import Spinner from "~components/Spinner";
+
+const ACCESS_KEY_ID = 'AKIAIIML4EFZLZF2MHBQ';
+const SECRET_ACCESS_KEY = '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';
+const API_VERSION = '2006-03-01';
+const BUCKET = ''; // nodejs-file-store
+const REGION = ''; // us-east-2
 
 const initialFormState = {
     name: '',
@@ -74,6 +82,7 @@ class Form extends React.PureComponent {
       name,
       email,
       number,
+      file,
     } = this.state;
     const { onSendResponse } = this.props;
     const isNameValid = name && name.length > 0;
@@ -108,39 +117,68 @@ class Form extends React.PureComponent {
       return;
     }
 
-    const formData = this.buildForm();
-
-    this.setState({
-        ...this.state,
-        isRequestFetching: true
+    AWS.config.update({
+      signatureVersion: 'v4',
+      region: REGION,
+      accessKeyId: ACCESS_KEY_ID,
+      secretAccessKey: SECRET_ACCESS_KEY
     });
 
-    fetch('https://usebasin.com/f/b3b27e6b544a', {
-        method: 'POST',
-        body: formData
-    }).then(() => {
-      onSendResponse('success');
-      this.handleInitState();
-    }).catch(() => {
-      onSendResponse('error');
-      this.handleInitState();
+    const s3 = new AWS.S3({
+      apiVersion: API_VERSION
     });
+
+    const bucketParams = {
+      Bucket : BUCKET,
+      Key: `${uuidv4()}/${file[0].name}`,
+      Body: '',
+      ACL: 'private',
+      ContentType: file[0].headers['content-type'],
+    };
+
+    bucketParams.Body = file[0];
+
+    s3.upload(bucketParams).promise()
+      .then(data => {
+        const url = process.env.S3 + data.key;
+
+        const formData = this.buildForm(url);
+
+        this.setState({
+          ...this.state,
+          isRequestFetching: true
+        });
+
+        fetch('https://usebasin.com/f/b3b27e6b544a', {
+          method: 'POST',
+          body: formData
+        }).then(() => {
+          onSendResponse('success');
+          this.handleInitState();
+        }).catch(() => {
+          onSendResponse('error');
+          this.handleInitState();
+        });
+      })
+      .catch(error => {
+        onSendResponse('error');
+        this.handleInitState();
+      });
   };
 
   handleInitState = () => {
     this.setState({...initialFormState});
   };
 
-  buildForm = () => {
+  buildForm = (url) => {
       const { name, email, number, description } = this.state;
-      const { files } = document.querySelector('.file-upload .inputfile');
       const formData = new FormData();
 
       formData.append('name', name);
       formData.append('email', email);
       formData.append('phone', number);
       formData.append('message', description);
-      formData.append('file', files[0]);
+      formData.append('file', url);
 
       return formData;
   };
