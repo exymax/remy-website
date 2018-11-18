@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as emailValidator from 'email-validator';
+import classNames from 'classnames';
 import firebase from 'firebase';
 import uuidv4 from 'uuid/v4';
 
@@ -28,6 +29,7 @@ const initialFormState = {
     nameError: false,
     emailError: false,
     numberError: false,
+    fileError: false,
     isRequestFetching: false
 };
 
@@ -62,17 +64,20 @@ class Form extends React.PureComponent {
     });
   };
 
-  handleChangeFile = ({ target }) => {
-    const { value, files } = target;
+  handleChangeFile = (event) => {
+    const { value, files } = event.target;
     const name = files[0].name;
     const size = files[0].size;
 
-    if (size < 3000000) {
+    if (size <= 3000000) {
       this.setState({
         file: value,
         fileObject: files[0],
         fileName: name,
       });
+    } else {
+        event.preventDefault();
+        alert('Your CV exceeds the size of 3MB');
     }
   };
 
@@ -96,6 +101,7 @@ class Form extends React.PureComponent {
     const isNameValid = name && name.length > 0;
     const isEmailValid = email && email.length > 0 && emailValidator.validate(email);
     const isNumberValid = number && number.length > 0;
+    const isFileValid = fileName.length;
 
     if (!isNameValid) {
       this.setState(() => ({
@@ -103,6 +109,18 @@ class Form extends React.PureComponent {
       }));
 
      setTimeout(() => this.setState(() => ({ nameError: false, })), 5000);
+    }
+
+    if (!isFileValid) {
+        this.setState({
+            ...this.state,
+            fileError: true
+        });
+
+        setTimeout(() => this.setState({
+            ...this.state,
+            fileError: false
+        }), 5000);
     }
 
     if (!isEmailValid) {
@@ -121,7 +139,7 @@ class Form extends React.PureComponent {
       setTimeout(() => this.setState(() => ({ numberError: false, })), 5000);
     }
 
-    if ([isNameValid, isEmailValid, isNumberValid].some(validity => !validity)) {
+    if ([isNameValid, isEmailValid, isNumberValid, isFileValid].some(validity => !validity)) {
       return;
     }
 
@@ -131,6 +149,11 @@ class Form extends React.PureComponent {
       const uploadFile = storageRef.child(`${uuidv4()}-${fileName}`).put(fileObject);
 
       const self = this;
+
+      self.setState({
+        ...self.state,
+        isRequestFetching: true
+      });
 
       uploadFile.on(
         'state_changed',
@@ -142,11 +165,6 @@ class Form extends React.PureComponent {
         () => {
           uploadFile.snapshot.ref.getDownloadURL().then((url) => {
             const formData = self.buildForm(url);
-
-            self.setState({
-              ...self.state,
-              isRequestFetching: true
-            });
 
             fetch('https://usebasin.com/f/b3b27e6b544a', {
               method: 'POST',
@@ -194,8 +212,11 @@ class Form extends React.PureComponent {
       nameError,
       emailError,
       numberError,
+      fileError,
       isRequestFetching
     } = this.state;
+
+    console.log(!!name);
 
     return (
         <form acceptCharset="UTF-8">
@@ -245,12 +266,14 @@ class Form extends React.PureComponent {
                     onChange={this.handleChangeDescription}
                 />
 
-                <UploadComponent
-                    file={file}
-                    fileName={fileName}
-                    onChangeFile={this.handleChangeFile}
-                    onCancelFile={this.handleCancelFile}
-                />
+                <div className={classNames('file-error-wrapper', { 'has-error': fileError })}>
+                    <UploadComponent
+                        file={file}
+                        fileName={fileName}
+                        onChangeFile={this.handleChangeFile}
+                        onCancelFile={this.handleCancelFile}
+                    />
+                </div>
 
                 <div
                   onClick={this.handleSendResponse}
