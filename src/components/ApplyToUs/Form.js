@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as emailValidator from 'email-validator';
-import AWS from 'aws-sdk';
+import firebase from 'firebase';
 import uuidv4 from 'uuid/v4';
 
 import UploadComponent from './UploadComponent';
 import Spinner from "~components/Spinner";
 
-const ACCESS_KEY_ID = 'AKIAIIML4EFZLZF2MHBQ';
-const SECRET_ACCESS_KEY = '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';
-const API_VERSION = '2006-03-01';
-const BUCKET = ''; // nodejs-file-store
-const REGION = ''; // us-east-2
+const config = {
+  apiKey: "AIzaSyBKGAKnjuVU_s-FYWOprAkzEAAH8_QkuuY",
+  authDomain: "remy-website.firebaseapp.com",
+  databaseURL: "https://remy-website.firebaseio.com",
+  projectId: "remy-website",
+  storageBucket: "gs://remy-website.appspot.com",
+  messagingSenderId: "520758660339"
+};
+firebase.initializeApp(config);
 
 const initialFormState = {
     name: '',
@@ -20,6 +24,7 @@ const initialFormState = {
     description: '',
     file: '',
     fileName: '',
+    fileObject: null,
     nameError: false,
     emailError: false,
     numberError: false,
@@ -58,13 +63,14 @@ class Form extends React.PureComponent {
   };
 
   handleChangeFile = ({ target }) => {
-    const { size, value, files } = target;
+    const { value, files } = target;
     const name = files[0].name;
-    // const shortName = name.length > 32 ? `${name.slice(0, 30)}...` : name;
+    const size = files[0].size;
 
-    if (size < 3001) {
+    if (size < 3000000) {
       this.setState({
         file: value,
+        fileObject: files[0],
         fileName: name,
       });
     }
@@ -73,6 +79,7 @@ class Form extends React.PureComponent {
   handleCancelFile = () => {
     this.setState({
       file: '',
+      fileObject: null,
       fileName: '',
     });
   };
@@ -82,7 +89,8 @@ class Form extends React.PureComponent {
       name,
       email,
       number,
-      file,
+      fileObject,
+      fileName,
     } = this.state;
     const { onSendResponse } = this.props;
     const isNameValid = name && name.length > 0;
@@ -117,53 +125,43 @@ class Form extends React.PureComponent {
       return;
     }
 
-    AWS.config.update({
-      signatureVersion: 'v4',
-      region: REGION,
-      accessKeyId: ACCESS_KEY_ID,
-      secretAccessKey: SECRET_ACCESS_KEY
-    });
+    if (fileObject) {
+      const storageRef = firebase.storage().ref();
 
-    const s3 = new AWS.S3({
-      apiVersion: API_VERSION
-    });
+      const uploadFile = storageRef.child(`${uuidv4()}-${fileName}`).put(fileObject);
 
-    const bucketParams = {
-      Bucket : BUCKET,
-      Key: `${uuidv4()}/${file[0].name}`,
-      Body: '',
-      ACL: 'private',
-      ContentType: file[0].headers['content-type'],
-    };
+      const self = this;
 
-    bucketParams.Body = file[0];
-
-    s3.upload(bucketParams).promise()
-      .then(data => {
-        const url = process.env.S3 + data.key;
-
-        const formData = this.buildForm(url);
-
-        this.setState({
-          ...this.state,
-          isRequestFetching: true
-        });
-
-        fetch('https://usebasin.com/f/b3b27e6b544a', {
-          method: 'POST',
-          body: formData
-        }).then(() => {
-          onSendResponse('success');
-          this.handleInitState();
-        }).catch(() => {
+      uploadFile.on(
+        'state_changed',
+        () => {},
+        () => {
           onSendResponse('error');
-          this.handleInitState();
-        });
-      })
-      .catch(error => {
-        onSendResponse('error');
-        this.handleInitState();
-      });
+          self.handleInitState();
+        },
+        () => {
+          uploadFile.snapshot.ref.getDownloadURL().then((url) => {
+            const formData = self.buildForm(url);
+
+            self.setState({
+              ...self.state,
+              isRequestFetching: true
+            });
+
+            fetch('https://usebasin.com/f/b3b27e6b544a', {
+              method: 'POST',
+              body: formData
+            }).then(() => {
+              onSendResponse('success');
+              self.handleInitState();
+            }).catch(() => {
+              onSendResponse('error');
+              self.handleInitState();
+            });
+          });
+        }
+      );
+    }
   };
 
   handleInitState = () => {

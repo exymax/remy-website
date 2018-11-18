@@ -20,12 +20,12 @@
     ]
   },
   "dependencies": {
-    "aws-sdk": "^2.358.0",
     "classnames": "^2.2.6",
     "css-loader": "^1.0.1",
     "email-validator": "^2.0.4",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
+    "firebase": "^5.5.8",
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.11",
     "node-sass": "^4.10.0",
