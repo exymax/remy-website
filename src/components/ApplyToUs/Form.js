@@ -52,6 +52,7 @@ class Form extends React.PureComponent {
   handleChangeFile = ({ target }) => {
     const { size, value, files } = target;
     const name = files[0].name;
+    // const shortName = name.length > 32 ? `${name.slice(0, 30)}...` : name;
 
     if (size < 3001) {
       this.setState({

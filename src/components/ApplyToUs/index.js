@@ -57,6 +57,7 @@ class ApplyToUs extends React.PureComponent {
           <Submission
             type={typeSubmission}
             onApply={this.handleApply}
+            onTryAgain={this.handleTryAgain}
           />
         );
 
@@ -94,6 +95,13 @@ class ApplyToUs extends React.PureComponent {
       step: 1,
       topValue: '',
       bottomValue: '',
+      typeSubmission: '',
+    });
+  };
+
+  handleTryAgain = () => {
+    this.setState({
+      step: 2,
       typeSubmission: '',
     });
   };

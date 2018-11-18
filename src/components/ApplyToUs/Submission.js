@@ -5,6 +5,7 @@ class Submission extends React.PureComponent {
   static propTypes = {
     type: PropTypes.string.isRequired,
     onApply: PropTypes.func.isRequired,
+    onTryAgain: PropTypes.func.isRequired,
   };
 
   getConfirmContent = () => {
@@ -17,12 +18,26 @@ class Submission extends React.PureComponent {
       return messages.hasOwnProperty(type) ? messages[type] : null;
   };
 
+  getConfirmTitle = () => {
+      const { type } = this.props;
+      const messages = {
+          success: 'Submission success',
+          error: 'Submission failed'
+      };
+
+      return messages.hasOwnProperty(type) ? messages[type] : null;
+  };
+
   render() {
-    const { onApply } = this.props;
+    const {
+      type,
+      onApply,
+      onTryAgain,
+    } = this.props;
 
     return (
     <div className="submission">
-      <div className="submission-title">CV Submission</div>
+      <div className="submission-title">{this.getConfirmTitle()}</div>
 
       <div className="submission-content">
           {this.getConfirmContent()}
@@ -34,6 +49,15 @@ class Submission extends React.PureComponent {
       >
         ok
       </div>
+
+      {type === 'error' && (
+        <div
+          onClick={onTryAgain}
+          className='submission-button flex-both-centered'
+        >
+          Try again
+        </div>
+      )}
     </div>
     );
   }
