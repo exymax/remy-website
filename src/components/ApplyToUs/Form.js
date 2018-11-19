@@ -9,12 +9,12 @@ import UploadComponent from './UploadComponent';
 import Spinner from "~components/Spinner";
 
 const config = {
-  apiKey: "AIzaSyBKGAKnjuVU_s-FYWOprAkzEAAH8_QkuuY",
-  authDomain: "remy-website.firebaseapp.com",
-  databaseURL: "https://remy-website.firebaseio.com",
-  projectId: "remy-website",
-  storageBucket: "gs://remy-website.appspot.com",
-  messagingSenderId: "520758660339"
+  apiKey: "AIzaSyBV1POuOl9lxsX-kUKatQoh9Xz66-O_zLg",
+  authDomain: "remy-website-20411.firebaseapp.com",
+  databaseURL: "https://remy-website-20411.firebaseio.com",
+  projectId: "remy-website-20411",
+  storageBucket: "remy-website-20411.appspot.com",
+  messagingSenderId: "1073738866659"
 };
 firebase.initializeApp(config);
 
