@@ -22,7 +22,7 @@ class App extends React.PureComponent {
 
   handleResize = () => {
     this.setState({
-      height: window.visualViewport.height,
+      height: window.innerHeight,
       width: document.documentElement.clientWidth,
     });
   };
